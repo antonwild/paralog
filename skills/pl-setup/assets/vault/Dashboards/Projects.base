@@ -1,0 +1,43 @@
+# Shows every note with "type: project" in its properties.
+# Two views (tabs at the top): active projects, and all projects incl. archived.
+filters:
+  and:
+    - type == "project"
+formulas:
+  mentions: file.backlinks.length
+properties:
+  status:
+    displayName: Status
+  created:
+    displayName: Started
+  archived:
+    displayName: Archived
+  file.mtime:
+    displayName: Last change
+  formula.mentions:
+    displayName: Mentions
+views:
+  - type: table
+    name: Active
+    filters:
+      and:
+        - status == "active"
+    order:
+      - file.name
+      - status
+      - created
+      - file.mtime
+      - formula.mentions
+    sort:
+      - property: file.mtime
+        direction: DESC
+  - type: table
+    name: All incl. archived
+    order:
+      - file.name
+      - status
+      - created
+      - archived
+    sort:
+      - property: created
+        direction: DESC

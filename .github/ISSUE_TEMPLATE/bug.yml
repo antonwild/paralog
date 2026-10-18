@@ -1,0 +1,29 @@
+name: Bug
+description: A skill or script did something wrong.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Never paste notes from your work vault.** No names, projects, meetings or company data.
+        Describe the problem with a made-up example instead.
+  - type: input
+    id: skill
+    attributes:
+      label: Skill or script
+      placeholder: /pl-daily, check.sh, install.sh, …
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+      description: Use a made-up example (e.g. "Project Phoenix", "Sarah").
+    validations:
+      required: true
+  - type: input
+    id: setup
+    attributes:
+      label: Setup
+      description: Agent, paralog version (`paralog_version` in `_system/rules.md`), Tasks plugin on or off.
+      placeholder: Claude Code, 0.1.0, tasks_plugin off

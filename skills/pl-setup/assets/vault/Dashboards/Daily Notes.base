@@ -1,0 +1,35 @@
+# Shows every note with "type: daily" in its properties.
+# "Not processed yet" lists days where /pl-daily has not run.
+filters:
+  and:
+    - type == "daily"
+formulas:
+  links: file.links.length
+properties:
+  date:
+    displayName: Date
+  processed:
+    displayName: Processed
+  formula.links:
+    displayName: Links filed
+views:
+  - type: table
+    name: Not processed yet
+    filters:
+      and:
+        - processed != true
+    order:
+      - file.name
+      - processed
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: All days
+    order:
+      - file.name
+      - processed
+      - formula.links
+    sort:
+      - property: date
+        direction: DESC

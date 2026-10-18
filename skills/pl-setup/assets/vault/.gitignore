@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Obsidian: window layout changes all the time, plugin secrets must never be committed
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/plugins/obsidian-local-rest-api/data.json
+.trash/
+
+# Skills are installed by "npx skills" or install.sh, not part of your notes. Local agent settings.
+.claude/settings.local.json
+.claude/skills/
+.agents/
+skills-lock.json

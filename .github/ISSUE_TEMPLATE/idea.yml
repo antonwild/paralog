@@ -1,0 +1,19 @@
+name: Idea
+description: Suggest a change or a new feature.
+labels: [idea]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Never paste notes from your work vault.** Use a made-up example instead.
+        paralog records your own work only. Ideas that track or evaluate colleagues will be closed.
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like paralog to do?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why? Which situation in your work week does it help with?
