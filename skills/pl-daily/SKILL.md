@@ -103,6 +103,15 @@ Under `## Summary` in the daily note write (replace the placeholder comment). On
 
 Then set `processed: true` in the daily note's frontmatter.
 
+## Step 7a — Daily properties
+
+Write the properties of rules section 12 into the daily note's frontmatter, after `processed`:
+
+1. Run `bash "<skills folder>/pl-setup/scripts/props.sh" "<vault>" <date>` (the `pl-setup` skill sits next to this skill's folder). It prints `projects`, `meetings`, `areas` and the counts from what is now in the vault. Copy them exactly. If the script is not there, derive them by reading the vault as rules section 12 says.
+2. `summary`: the `**In short:**` text. After a re-run, one or two sentences for the whole day.
+3. `topics`: run `props.sh "<vault>" --topics` for the topics in use. Pick 0–5 for this day, reuse first (rules section 12).
+4. On a re-run, replace all these properties. Never add other properties.
+
 ## Step 8 — Report
 
 Tell the user in a few lines: what was filed where, what was created, what stayed unclear. Do not repeat the whole dump.
@@ -113,3 +122,4 @@ Tell the user in a few lines: what was filed where, what was created, what staye
 - Never invent facts, names, dates or impact to fill gaps.
 - Never delete or rewrite old log entries.
 - Never write to `4_Archive` (ask the user whether to unarchive instead).
+- Never add a property about people to any note (rules section 6).

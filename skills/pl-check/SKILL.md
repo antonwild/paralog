@@ -1,6 +1,6 @@
 ---
 name: pl-check
-description: Check the Obsidian PARA vault for problems — duplicate open tasks, broken links, missing properties, folder names with spaces, misplaced meetings, stale tasks and projects, personal data about colleagues, Tasks plugin setup — and offer to fix them. Use when the user runs /pl-check, or asks to check, clean up, lint or tidy the vault. A good habit once a week.
+description: Check the Obsidian PARA vault for problems — duplicate open tasks, broken links, missing properties, daily note properties that differ from the vault, folder names with spaces, misplaced meetings, stale tasks and projects, personal data about colleagues, Tasks plugin setup — and offer to fix them. Use when the user runs /pl-check, or asks to check, clean up, lint or tidy the vault. A good habit once a week.
 ---
 
 # Check — find problems in the vault
@@ -20,6 +20,8 @@ Run `bash "<skills folder>/pl-setup/scripts/check.sh" "<vault>"` (the `pl-setup`
 | `links` | `[[links]]` to notes that do not exist. Date links are ignored. |
 | `meetings` | Project meetings outside their project's `Meetings` folder (rules section 1). |
 | `tasks` | Only with `tasks_plugin: on`: the checks in rules section 11, *Checks*. |
+| `props` | Processed daily notes without the properties of rules section 12, or whose links and counts differ from the vault. Topics that are not lowercase-with-dashes, or more than 5. |
+| `people` | A property that lists people, in any note (rules section 6). |
 
 If the script is not there (another agent setup), do these checks by reading the vault.
 
@@ -38,3 +40,10 @@ Report **only problems found**, one line each, grouped by check, in plain words.
 Offer to fix them with the interactive question tool (rules section 8): one question per group, e.g. `Fix all (Recommended)` / `Let me choose` / `Skip`. Stale items: only list them. Never fix anything without the user's answer. After fixing, run the script again and report what is left.
 
 Fixes follow the writing rules: never edit a Brain Dump, never delete log entries. A fix in a log is a new correction entry (rules section 2, rule 2).
+
+**Fixing `props`** (also the first fill of older daily notes after an update): only the frontmatter changes, never the body. For each note:
+1. Run `bash "<skills folder>/pl-setup/scripts/props.sh" "<vault>" <date>...` (several dates in one call) and copy `projects`, `meetings`, `areas` and the counts exactly.
+2. `summary`: the `**In short:**` text of its Summary. Several Summaries (re-runs): one or two sentences for the whole day.
+3. `topics`: from the Brain Dump and the Summary, as rules section 12 says. Run `props.sh "<vault>" --topics` first and again after every few notes, so later notes reuse the topics of earlier ones. Work from the oldest note to the newest.
+
+**Fixing `people`:** remove the property. Names that the work needs stay as plain text in the entries.

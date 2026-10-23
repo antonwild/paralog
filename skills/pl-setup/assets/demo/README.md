@@ -6,7 +6,7 @@ Three weeks of work of **Alex Rivera**, a project manager, from 2026-09-28 to 20
 
 | Note | Shows |
 |---|---|
-| `0_Daily/` | 15 daily notes with dictated Brain Dumps (one is half German) and the Summary that `/pl-daily` wrote. 2026-10-08 has a sent recap, 2026-10-09 a sent weekly update. **2026-10-15 and 2026-10-16 are not processed yet** — try it yourself. |
+| `0_Daily/` | 15 daily notes with dictated Brain Dumps (one is half German), the Summary and the properties that `/pl-daily` wrote. `Journal.base` shows them as a table in Obsidian. 2026-10-08 has a sent recap, 2026-10-09 a sent weekly update. **2026-10-15 and 2026-10-16 are not processed yet** — try it yourself. |
 | [[Project Phoenix]] | An active project: timeline, decisions, open items and a timeline chart. Its meetings: [[Phoenix Kickoff 2026-09-29]] (one-off) and [[Phoenix Weekly]] (with a sent recap, see [[2026-10-08]]). |
 | [[Invoice Automation]] | A completed project in `4_Archive`, with its closing summary. |
 | [[Vendor Management]] | An area with an open `#for-manager` question. |

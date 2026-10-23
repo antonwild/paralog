@@ -3,6 +3,14 @@
 The version is `paralog_version` in `skills/pl-setup/assets/vault/_system/rules.md`.
 Bump it when a release changes framework files (rules, templates, AGENTS.md, hook), so `/pl-daily` tells users to run `/pl-setup`.
 
+## 0.2.0 — 2026-10-23
+
+- **Daily properties:** `/pl-daily` writes properties into each processed daily note: `summary`, `projects`, `meetings`, `areas`, `topics` and the counts `decisions`, `wins`, `milestones`, `for_manager` (rules section 12). Links and counts are derived from the vault by `pl-setup/scripts/props.sh`. Topics are reused before new ones are added.
+- **`Journal.base`:** an Obsidian Bases table of the daily notes, with views for all days, the last 14 days, decisions and wins, items for the manager, and days not processed yet. Your file: created once, never overwritten. Needs Obsidian 1.9 or newer.
+- **`/pl-check`:** new checks `props` (missing properties, or links and counts that differ from the vault) and `people` (a property that lists people, in any note). The `props` fix also fills older daily notes after the update.
+- **Decisions** go into exactly one `## Decisions` section (rules section 3).
+- Run `/pl-setup` to update the rules and get `Journal.base`, then `/pl-check` to fill in older daily notes. The body of your notes does not change.
+
 ## 0.1.1 — 2026-10-23
 
 - **Dividers between blocks:** sections with several `###` blocks (`## Prep`, `## Handover`, `## Recaps`, `## Weekly Update`, and a re-run `## Summary`) now separate the blocks with a `---` line (rules section 2, rule 10). `pl-prep`, `pl-handover`, `pl-recap`, `pl-week` and `pl-daily` follow it. Plain Markdown, no Obsidian setup needed. Run `/pl-setup` to update the rules.

@@ -53,7 +53,8 @@ The demo vault holds three weeks of made-up work (`assets/demo/README.md`). It n
 3. Show the list in short form: files that changed (`differs`), files that are new (`missing`), new settings (`newkey`). For changed `_system/rules.md`, read both versions and say in 1–3 lines what changed.
 4. Ask: `Update (Recommended)` / `Skip`. In the description write: "Framework files are replaced. Your notes and settings stay. Old versions stay in git history." If the vault has no git, say instead that old versions are lost, and recommend `Skip` for templates the user changed.
 5. On update: run the script with `--update`. New config keys are added with their default value; tell the user each new key in one line with what it does.
-6. **Tasks plugin switched:** if the user changed `tasks_plugin` in the config since the last update, the update brings the matching templates. Notes still exactly as paralog created them (e.g. a new `1on1 Manager`) switch too. Notes with your content keep their old `## Open Items`. Suggest `/pl-check` to bring them in line.
+6. **Daily properties (new in 0.2.0):** if `bash "<skill folder>/scripts/check.sh" "<vault>"` prints lines with `has no properties yet`, say in one line: "Your older daily notes have no properties yet. Run `/pl-check` to fill them in, then open `Journal.base` in Obsidian."
+7. **Tasks plugin switched:** if the user changed `tasks_plugin` in the config since the last update, the update brings the matching templates. Notes still exactly as paralog created them (e.g. a new `1on1 Manager`) switch too. Notes with your content keep their old `## Open Items`. Suggest `/pl-check` to bring them in line.
 
 ## Step 6 — Report
 

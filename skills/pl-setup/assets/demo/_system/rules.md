@@ -1,7 +1,7 @@
 ---
 type: system
 # Set by /pl-setup. Do not change by hand.
-paralog_version: 0.1.1
+paralog_version: 0.2.0
 ---
 # Vault Rules
 
@@ -41,7 +41,7 @@ Rule of thumb: **Did something happen?** → log it in a project, area or meetin
 5. **Each task exists once.** Put it in the `## Open Items` of the note it belongs to (usually the project). Do not copy it into other notes — `#for-manager` is enough for `pl-prep` to find it.
    **The open tasks of a note** are its `- [ ]` lines in `## Open Items`. For a project, add the open tasks of its `Meetings` notes. With `tasks_plugin: on`, tasks live in the daily notes instead: use section 11 for where to write, find and close them. Skills say "open tasks of a note" and mean this rule.
 6. **Link generously.** Link projects, areas and meetings with `[[Name]]` the first time they appear in an entry. Never link people: names are plain text (section 6).
-7. **Only three things may be overwritten** in logs: the single `**Current:**` line under `## Status` in a project, the `**Status:**` line of a goal (section 3b), and ticking a task checkbox (`- [ ]` → `- [x]`) when it is resolved. When ticking, append the result and source: `- [x] Ask about budget #for-manager → approved ([[2026-10-20]])`. With `tasks_plugin: on` use the format in section 11. Exception: the `## Timeline Chart` section is a generated view, not a log. Agents replace it as a whole (section 10).
+7. **Only three things may be overwritten** in logs: the single `**Current:**` line under `## Status` in a project, the `**Status:**` line of a goal (section 3b), and ticking a task checkbox (`- [ ]` → `- [x]`) when it is resolved. When ticking, append the result and source: `- [x] Ask about budget #for-manager → approved ([[2026-10-20]])`. With `tasks_plugin: on` use the format in section 11. Exceptions: the `## Timeline Chart` section is a generated view, not a log. Agents replace it as a whole (section 10). The properties of a daily note are an index, not a log. Agents replace them as a whole (section 12).
 8. **Dates** are always `YYYY-MM-DD`.
 9. **Language:** write processed notes in the `note_language` from [[config]]. The dictation may be in any language, or mixed — understand all of it. Keep proper names, quotes and terms without a clean translation in the original language.
 10. **Dividers between blocks.** A section that holds several blocks (`## Prep`, `## Handover`, `## Recaps`, `## Weekly Update`), each starting with its own `###` heading, separates the blocks with a line `---`. Keep a blank line before and after it: `---` directly under a text line turns that line into a heading. No divider before the first or after the last block. No dividers between single-line log entries or month headings.
@@ -86,7 +86,7 @@ Exceptions: the Brain Dump and quotes stay exactly as the user said them.
 
 Decisions, Wins and Milestones stay on one line, with their *Why*, *Who*, *Impact* fields.
 
-- **Decision** — anything agreed or decided, including small ones. Include *Why* and *Who* when known.
+- **Decision** — anything agreed or decided, including small ones. Include *Why* and *Who* when known. A decision goes into exactly one `## Decisions` section: the meeting's, if it was made in a meeting, else the project's or area's. A line in the project `Timeline` is fine.
 - **Win** — something the user achieved or contributed to: finished work, solved problems, helped others, positive feedback received. Logged in `Career - Wins` → `## Wins` (and linked to the project). Describe the impact if it was mentioned; do not exaggerate. Add *Goal:* when it clearly serves a goal (section 3b).
 - **Milestone** — a rare, big achievement worth mentioning in a half-year or year-end review. Logged in `Career - Wins` → `## Milestones`. Include *My part* and *Impact*. See section 3a.
 - **Task** — something still to do. Goes into `Open Items` of the related project or area.
@@ -160,6 +160,7 @@ There are **no person notes**: no folder, no template, no card, no file per coll
 - **Only what the work needs.** No role history, opinions, personality, health, family, private life or performance — not in any note.
 - **Spelling:** dictation gets names wrong. Write a name the way earlier entries write it. If unsure, ask.
 - **Teams instead of people for "who owns what":** a lasting fact like "Procurement approves vendor contracts" goes into the `Teams` table (section 7), not next to a name.
+- **No people properties:** no note has a property that lists people (`people`, `attendees`, `with` or similar). In Obsidian Bases it would become a list of days per colleague.
 - **The manager** stays unnamed in the setup. The 1:1 lives in the `manager_meeting_note`; questions for the manager carry `#for-manager`.
 
 ## 7. Resources
@@ -311,3 +312,48 @@ Every skill follows this list when `tasks_plugin: on`. Skills do not repeat it.
 - `tasks` query blocks without the line `hide toolbar`.
 - Projects, areas and meetings without `task_tag`, or whose `## Open Items` is not the `tasks` query from the template. The `manager_meeting_note` also shows `#for-manager` (query line `(tags include #for-manager) OR (tags include #<task_tag>)`).
 - Tags like `#project/…`, `#area/…`, `#meeting/…` that match no note's `task_tag`.
+
+## 12. Daily note properties
+
+A processed daily note carries properties. `Journal.base` (Obsidian Bases) shows them as a table: filter days by project, topic, decisions or wins. The body stays the source. The properties are an index of it.
+
+```yaml
+---
+type: daily
+date: 2026-10-08
+processed: true
+summary: "Phoenix go-live set for 2026-12-01."
+projects:
+  - "[[Project Phoenix]]"
+meetings:
+  - "[[Phoenix Weekly]]"
+areas: []
+topics:
+  - go-live
+  - data-export
+decisions: 1
+wins: 0
+milestones: 0
+for_manager: 0
+---
+```
+
+- **When:** `/pl-daily` writes them after filing, together with `processed: true`. A note that is not processed has only `type`, `date` and `processed`.
+- **Format:** keys in the order above. `summary` in double quotes. Lists one item per line, links in quotes. An empty list is `[]`. Counts are numbers, `0` when none.
+- **Derived from the vault** (`pl-setup/scripts/props.sh` prints them). Never estimate them:
+
+| Property | Holds |
+|---|---|
+| `projects`, `meetings`, `areas` | Every project, meeting and area note with an entry that starts with this day's date link. Not `Career - Wins` and `Career - Goals` (the counts cover them). A–Z. |
+| `decisions` | Entries from this day under a `## Decisions` heading. |
+| `wins`, `milestones` | Entries from this day under `## Wins` and `## Milestones` in `Career - Wins`. |
+| `for_manager` | Task lines with `#for-manager` whose first date link is this day, open or closed. |
+
+- **`summary`:** the `**In short:**` text of the Summary, without the label. After a re-run, one or two sentences for the whole day.
+- **`topics`:** 0–5 themes of the day that the links do not show, e.g. `budget`, `data-migration`, `hiring`. Lowercase, words joined with `-`, in `note_language`.
+  - **Reuse first.** Read the topics already in use (`props.sh <vault> --topics`). Use an existing one when it fits. Add a new one only when none fits.
+  - Never a person's name, never a project, meeting or area name (they have their own property). No opinions, ratings or moods.
+- **Re-run:** write all properties again for the whole day. They replace the old values.
+- **No other properties** on daily notes. Never one about people (section 6).
+- **`Journal.base`** belongs to the user (like `Tasks.md`). paralog creates it once and never overwrites it. Bases need Obsidian 1.9 or newer. Other editors show the properties as plain YAML.
+- `/pl-check` finds processed notes with missing or wrong properties and fills them in.

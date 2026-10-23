@@ -5,7 +5,7 @@ Dictate your day. The agent files it into a [PARA](https://fortelabs.com/blog/pa
 
 Made for corporate work: prepare 1:1s and reviews from your own wins and goals, send meeting recaps and weekly updates, and answer "when did we decide that?" with sources.
 
-- **Markdown only.** No database, no server. Your notes stay plain files. Obsidian adds clickable links and the optional Tasks plugin; VS Code or any other editor reads the same files.
+- **Markdown only.** No database, no server. Your notes stay plain files. Obsidian adds clickable links, a table of your days (`Journal.base`) and the optional Tasks plugin; VS Code or any other editor reads the same files.
 - **Every entry is dated** and links to the daily note it came from. Your words in the brain dump are never changed.
 - **Your own work.** Entries are about your projects, meetings, decisions and wins.
 - **Facts only.** The agent never invents names, dates or numbers, and says what it could not find.
@@ -66,6 +66,12 @@ Read this before you use paralog for work.
 - **Works council / data protection:** some companies must approve tools that could monitor employees. paralog is designed not to: no notes about people, no evaluation of colleagues. If in doubt, ask before you use it at work.
 - **Commit times are not proof.** They come from your computer clock. A recap email that others received is stronger evidence. `/pl-recap` writes one.
 
+## Your days as a table (Obsidian only)
+
+`/pl-daily` gives each processed day a few properties: a one-line summary, the projects, meetings and areas it filed into, up to 5 topics, and how many decisions, wins, milestones and `#for-manager` items came from that day. Open `Journal.base` in Obsidian 1.9 or newer: all days, the last 14 days, days with decisions or wins, days with items for your manager. Filter by a project or topic without opening each note.
+
+The links and counts come from the notes themselves, so `/pl-check` can find and fix values that are wrong. There is never a property about people. After an update, run `/pl-check` once to fill in older days. Other editors show the properties as plain YAML.
+
 ## Optional: Tasks plugin (Obsidian only)
 
 With the Obsidian [Tasks](https://publish.obsidian.md/tasks/) plugin, every task lives in its daily note with a tag and dates. Projects, meetings and `Tasks.md` show live lists. Answer `Yes` in `/pl-setup`, or set `tasks_plugin: on` in `_system/config.md` and run `/pl-setup`. Not using Obsidian? Keep it off: other editors show the live lists as code blocks, and tasks would only be visible in the daily notes.
@@ -79,7 +85,8 @@ skills/                 the agent skills (SKILL.md format)
   pl-setup/
     scripts/scaffold.sh builds or updates a vault
     scripts/check.sh    read-only vault checks, used by /pl-check
-    assets/vault/       files for the vault: AGENTS.md, rules, config, templates, git hook
+    scripts/props.sh    derives the daily note properties from the vault (read-only)
+    assets/vault/       files for the vault: AGENTS.md, rules, config, templates, Journal.base, git hook
     assets/tasks/       replacements when the Tasks plugin is on
     assets/demo/        the demo vault (/pl-setup demo): three weeks of made-up work
 install.sh              fallback installer without npx

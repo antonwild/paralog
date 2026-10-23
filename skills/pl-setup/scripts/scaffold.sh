@@ -8,7 +8,7 @@
 #   scaffold.sh <vault> --demo     copies the demo vault (../assets/demo) into an empty folder, then installs
 #
 # Framework files belong to paralog and are replaced on --update (old versions stay in the vault's git history).
-# Your files (config, Career - Wins, Career - Goals, resources, Tasks.md) are only created, never overwritten.
+# Your files (config, Career - Wins, Career - Goals, resources, Journal.base, Tasks.md) are only created, never overwritten.
 # Exception on --update: a file still exactly as shipped for the other tasks_plugin setting follows the switch.
 # New config keys are added to your config with their default value; existing values are never changed.
 #
@@ -59,7 +59,7 @@ FRAMEWORK_FILES=(AGENTS.md CLAUDE.md .gitignore .claude/settings.json .claude/ho
                  _system/rules.md _system/templates/*.md)
 USER_FILES=("_system/config.md" "2_Areas/Career - Wins.md" "2_Areas/Career - Goals.md" "2_Areas/Meetings/1on1 Manager.md"
             "3_Resources/Glossary.md" "3_Resources/Where to Find.md" "3_Resources/Rules & Policies.md"
-            "3_Resources/Commands.md" "3_Resources/How-Tos.md" "3_Resources/Teams.md")
+            "3_Resources/Commands.md" "3_Resources/How-Tos.md" "3_Resources/Teams.md" "Journal.base")
 [ -n "$TASKS" ] && USER_FILES+=("Tasks.md")
 
 # 1. PARA folders
