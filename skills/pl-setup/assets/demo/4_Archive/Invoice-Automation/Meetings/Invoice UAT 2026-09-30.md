@@ -13,7 +13,8 @@ aliases: []
 - **Who:** Priya Nair, me
 
 ## Log
-- [[2026-09-30]] — UAT. 2 bugs found: a wrong label (the vendor fixed it the same day) and VAT rounding (totals sometimes off by one cent).
+### 2026-09
+- [[2026-09-30]] — **Meeting.** UAT. 2 bugs found: a wrong label (the vendor fixed it the same day) and VAT rounding (totals sometimes off by one cent).
 
 ## Decisions
 

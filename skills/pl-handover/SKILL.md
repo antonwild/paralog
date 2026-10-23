@@ -62,6 +62,6 @@ Follow the writing style (rules section 2a). One page per project at most. The r
 
 ## Step 4 — Save and show
 
-1. Insert the handover into the project or area note under `## Handover`, **newest on top** (add the heading above `## Timeline` or `## Log` if missing).
+1. Insert the handover into the project or area note under `## Handover`, **newest on top**, with a `---` line between it and the older handover (rules section 2, rule 10). Add the heading above `## Timeline` or `## Log` if missing.
 2. Show it in chat, ready to copy. For several projects, show them one after another.
-3. Append to the Timeline/Log: `- [[<today>]] — Handover written.`
+3. Append to the Timeline/Log: `- [[<today>]] — **Handover written.**`

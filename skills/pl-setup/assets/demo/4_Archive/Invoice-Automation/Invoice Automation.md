@@ -37,15 +37,19 @@ timeline LR
 *Generated [[2026-10-14]] from the Timeline/Log. Do not edit by hand.*
 
 ## Timeline
+### 2026-09
 - [[2026-09-28]] — Added to the vault. The project runs since August. UAT with Finance on 2026-09-30.
 - [[2026-09-30]] — UAT with Priya Nair, see [[Invoice UAT 2026-09-30]]. 2 bugs found, one fixed the same day.
+
+### 2026-10
 - [[2026-10-02]] — The vendor fixed the VAT rounding bug. Priya Nair confirmed the fix.
 - [[2026-10-07]] **Decision:** Go-live on 2026-10-09.
 - [[2026-10-09]] — Went live. The first run processed 300 invoices automatically.
 - [[2026-10-14]] — Second run: 280 invoices, no problems (Priya Nair).
-- [[2026-10-14]] — Archived (completed).
+- [[2026-10-14]] — **Archived** (completed).
 
 ## Decisions
+### 2026-10
 - [[2026-10-07]] **Decision:** Go-live on 2026-10-09. *Why:* UAT passed, both bugs fixed. *Who:* Priya Nair, me.
 
 ## Open Items

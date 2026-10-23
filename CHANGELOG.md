@@ -3,6 +3,14 @@
 The version is `paralog_version` in `skills/pl-setup/assets/vault/_system/rules.md`.
 Bump it when a release changes framework files (rules, templates, AGENTS.md, hook), so `/pl-daily` tells users to run `/pl-setup`.
 
+## 0.1.1 — 2026-10-23
+
+- **Dividers between blocks:** sections with several `###` blocks (`## Prep`, `## Handover`, `## Recaps`, `## Weekly Update`, and a re-run `## Summary`) now separate the blocks with a `---` line (rules section 2, rule 10). `pl-prep`, `pl-handover`, `pl-recap`, `pl-week` and `pl-daily` follow it. Plain Markdown, no Obsidian setup needed. Run `/pl-setup` to update the rules.
+- **Month headings:** `Timeline`, `Log`, `Decisions` and `Wins` group entries under `### YYYY-MM` (rules section 2, rule 11). Foldable in Obsidian, listed in the outline.
+- **Type word:** log entries such as **1:1**, **Meeting**, **Kickoff**, **Created**, **Recap sent**, **Weekly update sent**, **Handover written** and **Archived** start with their type in bold (rules section 3).
+- **Several facts, several lines:** a log entry with more than one fact gets one nested bullet per fact (rules section 3).
+- Existing notes are not rewritten. Older entries get their month heading when the next entry of a new month is added.
+
 ## 0.1.0 — 2026-10-18
 
 First release.

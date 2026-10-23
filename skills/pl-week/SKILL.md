@@ -71,10 +71,10 @@ Alex
 
 ## Step 5 — Save and show
 
-1. Add the draft to today's daily note under `## Weekly Update` (create the heading at the end if missing), as `### Week 41 — draft`.
+1. Add the draft to today's daily note under `## Weekly Update` (create the heading at the end if missing), as `### Week 41 — draft`. If the heading already holds a draft, add the new one below it with a `---` line between them (rules section 2, rule 10).
 2. Show the draft in chat, ready to copy.
 3. Tell the user in one line which active projects had no entry for 14 days, if any. Not in the email.
-4. When the user says it was sent (now or in a later dump), log it in the `manager_meeting_note` `## Log`: `- [[<date sent>]] — Weekly update sent: <subject>.` and change `— draft` to `— sent <date>`.
+4. When the user says it was sent (now or in a later dump), log it in the `manager_meeting_note` `## Log`: `- [[<date sent>]] — **Weekly update sent:** <subject>.` and change `— draft` to `— sent <date>`.
 
 ## Never
 

@@ -65,6 +65,6 @@ Alex
 
 ## Step 4 — Save and show
 
-1. Add the draft to the daily note under `## Recaps` (create the heading at the end if missing), as `### <Meeting> — draft`.
+1. Add the draft to the daily note under `## Recaps` (create the heading at the end if missing), as `### <Meeting> — draft`. If the heading already holds a recap, add the new one below it with a `---` line between them (rules section 2, rule 10).
 2. Show the draft in chat, ready to copy.
-3. When the user says it was sent (now or in a later dump), log it in the meeting note's `## Log`: `- [[<date sent>]] — Recap sent to Sarah Miller, Tom Becker: <subject>.` and change `— draft` to `— sent <date>`.
+3. When the user says it was sent (now or in a later dump), log it in the meeting note's `## Log`: `- [[<date sent>]] — **Recap sent** to Sarah Miller, Tom Becker: <subject>.` and change `— draft` to `— sent <date>`.

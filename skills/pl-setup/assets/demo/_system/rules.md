@@ -1,7 +1,7 @@
 ---
 type: system
 # Set by /pl-setup. Do not change by hand.
-paralog_version: 0.1.0
+paralog_version: 0.1.1
 ---
 # Vault Rules
 
@@ -35,7 +35,7 @@ Rule of thumb: **Did something happen?** → log it in a project, area or meetin
 ## 2. Writing rules
 
 1. **The Brain Dump is sacred.** Never edit, fix, reformat or delete anything under `## Brain Dump`. It is the dated source of truth.
-2. **Logs are append-only** (projects, areas, meetings — not resources, see section 7). Add new lines at the bottom of `Timeline`, `Log`, `Decisions`, `Wins`. Never rewrite or delete old entries. If something was wrong, add a correction entry.
+2. **Logs are append-only** (projects, areas, meetings — not resources, see section 7). Add new lines at the end of their month in `Timeline`, `Log`, `Decisions`, `Wins` (rule 11). Never rewrite or delete old entries. If something was wrong, add a correction entry.
 3. **Every log entry starts with its source date as a link** to the daily note, e.g. `- [[2026-10-17]] — ...`. This is what makes the vault work as evidence.
 4. **Facts, not interpretation.** Write what was said, decided, or done, and by whom. Never invent names, dates, numbers or reasons. If the dictation is unclear, write `(unclear in dictation)` instead of guessing.
 5. **Each task exists once.** Put it in the `## Open Items` of the note it belongs to (usually the project). Do not copy it into other notes — `#for-manager` is enough for `pl-prep` to find it.
@@ -44,6 +44,8 @@ Rule of thumb: **Did something happen?** → log it in a project, area or meetin
 7. **Only three things may be overwritten** in logs: the single `**Current:**` line under `## Status` in a project, the `**Status:**` line of a goal (section 3b), and ticking a task checkbox (`- [ ]` → `- [x]`) when it is resolved. When ticking, append the result and source: `- [x] Ask about budget #for-manager → approved ([[2026-10-20]])`. With `tasks_plugin: on` use the format in section 11. Exception: the `## Timeline Chart` section is a generated view, not a log. Agents replace it as a whole (section 10).
 8. **Dates** are always `YYYY-MM-DD`.
 9. **Language:** write processed notes in the `note_language` from [[config]]. The dictation may be in any language, or mixed — understand all of it. Keep proper names, quotes and terms without a clean translation in the original language.
+10. **Dividers between blocks.** A section that holds several blocks (`## Prep`, `## Handover`, `## Recaps`, `## Weekly Update`), each starting with its own `###` heading, separates the blocks with a line `---`. Keep a blank line before and after it: `---` directly under a text line turns that line into a heading. No divider before the first or after the last block. No dividers between single-line log entries or month headings.
+11. **Month headings.** In `Timeline`, `Log`, `Decisions` and `Wins`, entries sit under a `### YYYY-MM` heading, oldest month first. The month is the one in the entry's leading date link. Add the entry at the end of its month. If the month has no heading yet, add the heading at the end of the section. If the section has older entries without a heading, first put a heading for their month above them (adding a heading does not rewrite an entry). `Milestones` stay without month headings.
 
 ## 2a. Writing style
 
@@ -56,6 +58,7 @@ Applies to everything agents write: notes, summaries and replies in chat.
 5. **Exact.** Write numbers, dates and names exactly. No vague words like "soon", "some" or "various".
 6. **One word for one thing.** Always use the same term for the same thing (e.g. always "decision", not also "agreement").
 7. **No filler.** No "basically", "in order to", "it is important to note", no praise, no hedging.
+8. **Several facts, several lines.** In logs, an entry with more than one fact gets nested bullets (section 3).
 
 Exceptions: the Brain Dump and quotes stay exactly as the user said them.
 
@@ -69,6 +72,19 @@ Exceptions: the Brain Dump and quotes stay exactly as the user said them.
 - [ ] Send updated timeline to Sarah Miller ([[2026-10-17]])
 - [ ] Need approval for extra license budget #for-manager ([[2026-10-17]])
 ```
+
+**Type word.** A `Log` or `Timeline` entry that is not a Decision, Win or Milestone starts with its type in bold when one of these fits: **Created**, **Meeting**, **1:1**, **Kickoff**, **Recap sent**, **Weekly update sent**, **Handover written**, **Archived**. Plain progress entries have no type word.
+
+**Several facts.** An entry with more than one fact has the type word on the dated line and one indented bullet per fact:
+
+```markdown
+- [[2026-10-20]] — **1:1.**
+  - Manager happy with the highlights. Goal "Automate manual Finance work" reached.
+  - [[Project Phoenix]]: allow time for communication materials before go-live on 2026-12-01.
+  - Extension of the old CRM contract approved.
+```
+
+Decisions, Wins and Milestones stay on one line, with their *Why*, *Who*, *Impact* fields.
 
 - **Decision** — anything agreed or decided, including small ones. Include *Why* and *Who* when known.
 - **Win** — something the user achieved or contributed to: finished work, solved problems, helped others, positive feedback received. Logged in `Career - Wins` → `## Wins` (and linked to the project). Describe the impact if it was mentioned; do not exaggerate. Add *Goal:* when it clearly serves a goal (section 3b).

@@ -37,7 +37,7 @@ Search the **whole vault** (including `4_Archive`) for a note with the same name
 3. Add short names to `aliases` (e.g. `Project Phoenix` → `[Phoenix]`).
 4. For a meeting: set `project: "[[Project Name]]"` (empty if none) and `cadence` (e.g. `daily`, `weekly`; empty for one-off). A one-off meeting that already happened gets `status: ended`.
 5. With `tasks_plugin: on`: set `task_tag` (rules section 11).
-6. If the note is created from a daily dump, add a first log entry: `- [[<date>]] — Created. <one line of context>`.
+6. If the note is created from a daily dump, add a first log entry: `- [[<date>]] — **Created.** <one line of context>`.
 
 ## Step 4 — Report
 

@@ -76,7 +76,7 @@ For each new note needed whose type is in `ask_before_creating` (config), for ea
 ## Step 6 — Write
 
 1. Create the approved notes with the `pl-new-note` skill's rules (templates in `_system/templates`, unique names, aliases).
-2. Append each item to its target note under the right heading (`Timeline`/`Log`, `Decisions`, `Open Items`, `Wins`), in the formats from the rules. Wins go to `2_Areas/Career - Wins.md` → `## Wins`; milestones go to `## Milestones` in the same note. Each item is either a Win or a Milestone, never both. Add *Goal:* only when the dump makes the link to an active goal clear (rules section 3b). Also add a Timeline entry in the related project.
+2. Append each item to its target note under the right heading (`Timeline`/`Log`, `Decisions`, `Open Items`, `Wins`), in the formats from the rules (section 3: type word, nested bullets for several facts; section 2, rule 11: month headings). Wins go to `2_Areas/Career - Wins.md` → `## Wins`; milestones go to `## Milestones` in the same note. Each item is either a Win or a Milestone, never both. Add *Goal:* only when the dump makes the link to an active goal clear (rules section 3b). Also add a Timeline entry in the related project.
    Approved goals go to `2_Areas/Career - Goals.md` in the format of rules section 3b.
    Meeting items go to the meeting note's `## Log` (one entry per occurrence), its `Decisions` and `Open Items`. Important results (decisions, milestones) also get one line in the project `Timeline`.
    **Tasks:** as in rules section 2, rule 5. With `tasks_plugin: on`, follow the table *What skills do with tasks* in rules section 11 (new tasks and hand-typed tasks).
@@ -87,7 +87,7 @@ For each new note needed whose type is in `ask_before_creating` (config), for ea
 
 ## Step 7 — Fill the daily Summary
 
-Under `## Summary` in the daily note write (replace the placeholder comment; on a re-run, append to the existing Summary):
+Under `## Summary` in the daily note write (replace the placeholder comment). On a re-run, append the new Summary below the existing one with a `---` line between them (rules section 2, rule 10):
 
 ```markdown
 **In short:** 1–2 short sentences about the day.

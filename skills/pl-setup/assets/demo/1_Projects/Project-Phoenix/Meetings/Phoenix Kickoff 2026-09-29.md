@@ -13,9 +13,11 @@ aliases: [Phoenix Kickoff]
 - **Who:** Sarah Miller, Tom Becker, me
 
 ## Log
-- [[2026-09-29]] — Kickoff. Scope: sales and support teams move to Salesforce.
+### 2026-09
+- [[2026-09-29]] — **Kickoff.** Scope: sales and support teams move to Salesforce.
 
 ## Decisions
+### 2026-09
 - [[2026-09-29]] **Decision:** Rollout in phases, sales team first. *Why:* the data cleanup for support takes at least two months (Tom Becker). *Who:* Sarah Miller, Tom Becker, me.
 - [[2026-09-29]] **Decision:** Weekly status meeting every Thursday ([[Phoenix Weekly]]). *Who:* Sarah Miller, Tom Becker, me.
 

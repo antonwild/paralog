@@ -33,7 +33,7 @@ Ask every question below with the interactive question tool (`AskUserQuestion` i
    - **My contributions:** Linked from [[Career - Wins]] where they exist.
    ```
 2. In the frontmatter set `status: <completed|cancelled|inactive>` and `archived: <today>`.
-3. Append to the Timeline/Log: `- [[<today>]] — Archived (<status>).`
+3. Append to the Timeline/Log: `- [[<today>]] — **Archived** (<status>).`
 4. Write or replace the `## Timeline Chart` section (rules section 10), with the archive date as the last event. The chart shows the whole history at a glance.
 5. Move it: a project's whole folder `1_Projects/<Folder-Name>/` → `4_Archive/<Folder-Name>/`; its `Meetings` folder moves with it. Set `status: ended` in its meeting notes. An area, resource or general meeting file → `4_Archive/<Name>.md`. Keep the name exactly the same, so all `[[links]]` still work.
 6. Add a line to today's daily note Summary: `- Archived [[<Name>]]`.

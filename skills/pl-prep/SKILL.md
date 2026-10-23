@@ -122,6 +122,6 @@ Rules:
 
 ## Step 4 — Save and show
 
-1. Insert the prep (also a review or promotion case) into the target note under `## Prep`, **newest on top**. If the note has no `## Prep`, add it above `## Log` or `## Timeline`. If the manager meeting note does not exist, create it with the `pl-new-note` skill (meeting, no project).
+1. Insert the prep (also a review or promotion case) into the target note under `## Prep`, **newest on top**, with a `---` line between it and the older prep (rules section 2, rule 10). If the note has no `## Prep`, add it above `## Log` or `## Timeline`. If the manager meeting note does not exist, create it with the `pl-new-note` skill (meeting, no project).
 2. Show the prep in chat.
 3. Remind the user in one line: dictate the answers in the next daily dump, and `/pl-daily` closes the resolved items.

@@ -25,10 +25,14 @@ aliases: [1on1, One on One]
 - Budget for two extra Salesforce licenses for the test users #for-manager ([[2026-10-01]])
 
 ## Log
-- [[2026-10-06]] — 1:1. License budget approved. My manager gave positive feedback on the Invoice Automation UAT.
-- [[2026-10-09]] — Weekly update sent: Weekly update, week 41 (2026-10-05 to 2026-10-09).
+### 2026-10
+- [[2026-10-06]] — **1:1.**
+  - License budget approved.
+  - My manager gave positive feedback on the Invoice Automation UAT.
+- [[2026-10-09]] — **Weekly update sent:** Weekly update, week 41 (2026-10-05 to 2026-10-09).
 
 ## Decisions
+### 2026-10
 - [[2026-10-06]] **Decision:** Budget for two extra Salesforce licenses approved. *Who:* my manager.
 
 ## Open Items
