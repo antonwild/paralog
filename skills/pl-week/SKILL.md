@@ -17,16 +17,20 @@ Default: Monday of the current week to today. If today is Monday, the previous w
 
 ## Step 2 — Gaps first
 
-Check the work days (Monday–Friday) of the window up to today:
-- **No daily note**, or a daily note with an empty Brain Dump → the day is missing.
-- A daily note with `processed: false` and a Brain Dump → not filed yet.
+Run `bash "<skills folder>/pl-setup/scripts/props.sh" "<vault>" --days <Monday> <today>` (the `pl-setup` skill sits next to this skill's folder). It prints one line per day (rules section 12, *Using the properties*). Keep the output: Step 3 uses it too.
+- `none` or `empty` → the day is missing.
+- `todo` → not filed yet.
 
-If there are gaps, ask once with the interactive question tool (rules section 8): `Fill in first (Recommended)` / `Write the update anyway`. On fill in: run the `pl-daily` skill for each day, oldest first (guided mode if the day has no dump), then continue here.
+Without the script, check the work days (Monday–Friday) of the window up to today yourself: no daily note or an empty Brain Dump → missing; `processed: false` with a Brain Dump → not filed yet.
+
+If there are gaps, ask once with the interactive question tool (rules section 8): `Fill in first (Recommended)` / `Write the update anyway`. On fill in: run the `pl-daily` skill for each day, oldest first (guided mode if the day has no dump), then run `--days` again and continue here.
 
 ## Step 3 — Collect
 
-1. **Done:** Milestones and Wins in `2_Areas/Career - Wins.md` inside the window. Then the Timeline entries of the active projects inside the window, and projects archived inside the window.
-2. **Decisions** inside the window: project `Decisions`, meeting `Decisions`.
+The day lines from Step 2 say where to look. Take the content from the entries, never from `summary` or `topics`. For a `stale` day, read its daily note and search the vault for its date link instead.
+
+1. **Done:** Milestones and Wins in `2_Areas/Career - Wins.md` inside the window (the days with `wins` or `milestones` above 0). Then the Timeline entries inside the window of each project in the day lines' `projects`. This includes projects archived inside the window.
+2. **Decisions** inside the window: the `Decisions` entries of the days with `decisions` above 0, in the projects, meetings and areas of those days.
 3. **Next week:** open tasks with a deadline in the 7 days after the window (rules section 2, rule 5, or section 11), and planned dates from the projects' `**Current:**` lines in that time.
 4. **Needs your input:** every open task with `#for-manager` anywhere in the vault (any date).
 5. **Risks:** blockers and delays named in the window.
@@ -73,7 +77,7 @@ Alex
 
 1. Add the draft to today's daily note under `## Weekly Update` (create the heading at the end if missing), as `### Week 41 — draft`. If the heading already holds a draft, add the new one below it with a `---` line between them (rules section 2, rule 10).
 2. Show the draft in chat, ready to copy.
-3. Tell the user in one line which active projects had no entry for 14 days, if any. Not in the email.
+3. Tell the user in one line which active projects had no entry for 14 days, if any: the active projects that are in no `projects` of `props.sh --days <today minus 13 days> <today>`. Not in the email.
 4. When the user says it was sent (now or in a later dump), log it in the `manager_meeting_note` `## Log`: `- [[<date sent>]] — **Weekly update sent:** <subject>.` and change `— draft` to `— sent <date>`.
 
 ## Never

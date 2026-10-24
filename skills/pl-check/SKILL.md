@@ -31,7 +31,7 @@ These need reading, not a script (not in `4_Archive`):
 
 1. **Duplicate open tasks** — the same task open in two notes.
 2. **Stale items** — open tasks older than 30 days; active projects with no new entry for 30 days (suggest `/pl-archive`).
-3. **Personal data** — opinions, private life, health or performance of a colleague, in any note; names or members in `Teams` (rules section 6). Fix: remove it with a correction entry; the old text stays in git history.
+3. **Personal data** — opinions, private life, health or performance of a colleague, in any note; names or members in `Teams` (rules section 6); names of people in the `summary` property of daily notes (rules section 12). The summary is an index: rewrite it without the names, no correction entry needed. Fix: remove it with a correction entry; the old text stays in git history.
 
 ## Step 3 — Report and fix
 
@@ -43,7 +43,7 @@ Fixes follow the writing rules: never edit a Brain Dump, never delete log entrie
 
 **Fixing `props`** (also the first fill of older daily notes after an update): only the frontmatter changes, never the body. For each note:
 1. Run `bash "<skills folder>/pl-setup/scripts/props.sh" "<vault>" <date>...` (several dates in one call) and copy `projects`, `meetings`, `areas` and the counts exactly.
-2. `summary`: the `**In short:**` text of its Summary. Several Summaries (re-runs): one or two sentences for the whole day.
+2. `summary`: the `**In short:**` text of its Summary, without names of people (rules section 12). Several Summaries (re-runs): one or two sentences for the whole day.
 3. `topics`: from the Brain Dump and the Summary, as rules section 12 says. Run `props.sh "<vault>" --topics` first and again after every few notes, so later notes reuse the topics of earlier ones. Work from the oldest note to the newest.
 
 **Fixing `people`:** remove the property. Names that the work needs stay as plain text in the entries.

@@ -108,7 +108,7 @@ Then set `processed: true` in the daily note's frontmatter.
 Write the properties of rules section 12 into the daily note's frontmatter, after `processed`:
 
 1. Run `bash "<skills folder>/pl-setup/scripts/props.sh" "<vault>" <date>` (the `pl-setup` skill sits next to this skill's folder). It prints `projects`, `meetings`, `areas` and the counts from what is now in the vault. Copy them exactly. If the script is not there, derive them by reading the vault as rules section 12 says.
-2. `summary`: the `**In short:**` text. After a re-run, one or two sentences for the whole day.
+2. `summary`: the `**In short:**` text, without names of people (rules section 12). After a re-run, one or two sentences for the whole day.
 3. `topics`: run `props.sh "<vault>" --topics` for the topics in use. Pick 0–5 for this day, reuse first (rules section 12).
 4. On a re-run, replace all these properties. Never add other properties.
 

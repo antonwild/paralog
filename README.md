@@ -85,7 +85,7 @@ skills/                 the agent skills (SKILL.md format)
   pl-setup/
     scripts/scaffold.sh builds or updates a vault
     scripts/check.sh    read-only vault checks, used by /pl-check
-    scripts/props.sh    derives the daily note properties from the vault (read-only)
+    scripts/props.sh    daily note properties: derives them from the vault, lists days (read-only)
     assets/vault/       files for the vault: AGENTS.md, rules, config, templates, Journal.base, git hook
     assets/tasks/       replacements when the Tasks plugin is on
     assets/demo/        the demo vault (/pl-setup demo): three weeks of made-up work

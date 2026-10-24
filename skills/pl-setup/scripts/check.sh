@@ -125,76 +125,7 @@ if grep -q '^tasks_plugin: on' _system/config.md 2>/dev/null; then
 fi
 
 # 6. props: processed daily notes carry the properties of rules section 12, and they match the vault
-EXPECTED="$(mktemp)"
-bash "$SCRIPTS/props.sh" . --tsv > "$EXPECTED"
-find 0_Daily -type f -name '*.md' -print0 2>/dev/null | xargs -0 awk -F'\t' '
-  function finish(   k, n, i, v, parts, item, want) {
-    if (f == "" || !processed || day == "") return
-    if (!(("summary") in has) && !(("projects") in has) && !(("decisions") in has)) {
-      print "props " f ": processed, but has no properties yet"; return
-    }
-    v = val["summary"]; gsub(/^["\047]+|["\047]+$/, "", v)
-    if (!("summary" in has) || v == "") print "props " f ": no summary"
-    split("projects meetings areas topics decisions wins milestones for_manager", keys, " ")
-    for (i = 1; i <= 8; i++) if (!(keys[i] in has)) print "props " f ": no " keys[i]
-    for (k in expect) {                                     # expected links that are missing
-      split(k, parts, SUBSEP)
-      if (parts[1] != day) continue
-      if (parts[2] ~ /^(decisions|wins|milestones|for_manager)$/) continue
-      if (!((parts[2] SUBSEP parts[3]) in got)) print "props " f ": " parts[2] " misses " parts[3]
-    }
-    for (k in got) {                                     # links that are not in the vault
-      split(k, parts, SUBSEP)
-      if (parts[1] == "topics") continue
-      if (!((day SUBSEP parts[1] SUBSEP parts[2]) in expect)) print "props " f ": " parts[1] " has " parts[2] ", but no entry of this day is in that note"
-    }
-    split("decisions wins milestones for_manager", counts, " ")
-    for (i = 1; i <= 4; i++) {
-      k = counts[i]; want = (day SUBSEP k) in num ? num[day SUBSEP k] : 0
-      if ((k in has) && val[k] + 0 != want) print "props " f ": " k " is " (val[k] + 0) ", the vault has " want
-    }
-    n = 0
-    for (k in got) {
-      split(k, parts, SUBSEP)
-      if (parts[1] != "topics") continue
-      n++
-      if (parts[2] !~ /^[a-z0-9]+(-[a-z0-9]+)*$/) print "props " f ": topic \"" parts[2] "\" is not lowercase-with-dashes"
-    }
-    if (n > 5) print "props " f ": " n " topics, at most 5"
-  }
-  NR == FNR {
-    if ($2 ~ /^(decisions|wins|milestones|for_manager)$/) num[$1 SUBSEP $2] = $3
-    else expect[$1 SUBSEP $2 SUBSEP $3] = 1
-    next
-  }
-  FNR == 1 {
-    finish(); f = FILENAME; day = ""; processed = 0; key = ""
-    delete has; delete val; delete got
-    fm = ($0 == "---"); next
-  }
-  !fm { next }
-  $0 == "---" { fm = 0; next }
-  /^[ \t]+- / {                                         # item of a block list
-    if (key == "") next
-    item = $0; sub(/^[ \t]+- [ \t]*/, "", item); gsub(/^["\047]|["\047][ \t]*$/, "", item)
-    if (item != "") got[key SUBSEP item] = 1
-    next
-  }
-  /^[A-Za-z_]+:/ {
-    key = $0; sub(/:.*/, "", key)
-    v = $0; sub(/^[A-Za-z_]+:[ \t]*/, "", v); sub(/[ \t]+$/, "", v)
-    has[key] = 1; val[key] = v
-    if (key == "date") day = v
-    if (key == "processed" && v == "true") processed = 1
-    if (v ~ /^\[.*\]$/) {                               # inline list: [a, "b"]
-      v = substr(v, 2, length(v) - 2); n = split(v, items, ",")
-      for (i = 1; i <= n; i++) { item = items[i]; gsub(/^[ \t"\047]+|[ \t"\047]+$/, "", item); if (item != "") got[key SUBSEP item] = 1 }
-    }
-    if (v != "") key = ""                                 # a block list follows only an empty value
-    next
-  }
-  END { finish() }' "$EXPECTED" >> "$OUT"
-rm -f "$EXPECTED"
+bash "$SCRIPTS/props.sh" . --check >> "$OUT"
 
 # 7. people: no property about people, in any note (rules section 6)
 notes | xargs -0 awk '

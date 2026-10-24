@@ -23,12 +23,13 @@ If the question is too vague to search (e.g. "that thing from last week"), ask w
 
 1. **Names:** resolve projects and meetings through note names and `aliases`. Search people's names as plain text, with spelling variants ("Sarah", "Sara", "Sarah Miller").
 2. **Keywords:** search with several words for the topic, including synonyms and translations into the languages the user dictates in (look at the Brain Dumps): e.g. "share / teilen / hand over / give the code".
-3. **Where to search — everything, including `4_Archive`:**
+3. **Shortlist days:** run `bash "<skills folder>/pl-setup/scripts/props.sh" "<vault>" --days <from> <to>` (the `pl-setup` skill sits next to this skill's folder; without a time range, from the oldest daily note to today). Days whose `projects`, `meetings`, `topics` or summary match the topic are the first Brain Dumps to read. This is only a shortlist. Still do the full search below, and never answer **Not found** from the day lines (rules section 12, *Using the properties*).
+4. **Where to search — everything, including `4_Archive`:**
    - `## Brain Dump` sections of daily notes — the **primary source**, the user's own words on that day.
    - `Timeline`, `Log`, `Decisions`, `Open Items` in projects, areas and meetings (`Meetings` folders).
    - `2_Areas/Career - Wins.md`, `2_Areas/Career - Goals.md` and the 1:1 notes (`## Prep`).
    - With `tasks_plugin: on`: also as in rules section 11.
-4. Keep every hit with its file and date (the `[[YYYY-MM-DD]]` at the start of the entry).
+5. Keep every hit with its file and date (the `[[YYYY-MM-DD]]` at the start of the entry).
 
 ## Step 3 — Get the git timestamp
 

@@ -350,6 +350,7 @@ for_manager: 0
 | `for_manager` | Task lines with `#for-manager` whose first date link is this day, open or closed. |
 
 - **`summary`:** the `**In short:**` text of the Summary, without the label. After a re-run, one or two sentences for the whole day.
+  - **No names of people.** It describes the work: "Kickoff decision questioned", not "Tom Becker doubts the decision". If the `**In short:**` line names people, write the summary without them. Names stay in the entries and the Brain Dump (section 6).
 - **`topics`:** 0–5 themes of the day that the links do not show, e.g. `budget`, `data-migration`, `hiring`. Lowercase, words joined with `-`, in `note_language`.
   - **Reuse first.** Read the topics already in use (`props.sh <vault> --topics`). Use an existing one when it fits. Add a new one only when none fits.
   - Never a person's name, never a project, meeting or area name (they have their own property). No opinions, ratings or moods.
@@ -357,3 +358,13 @@ for_manager: 0
 - **No other properties** on daily notes. Never one about people (section 6).
 - **`Journal.base`** belongs to the user (like `Tasks.md`). paralog creates it once and never overwrites it. Bases need Obsidian 1.9 or newer. Other editors show the properties as plain YAML.
 - `/pl-check` finds processed notes with missing or wrong properties and fills them in.
+
+### Using the properties
+
+Skills read the properties to **find** days and notes. They never take content from them.
+
+- **Day lines first.** `props.sh <vault> --days FROM TO` prints one line per day: state, counts, summary, links, topics. Read it instead of opening every daily note of a window. It also shows the days with no note or an unfiled Brain Dump.
+- **Then the entries.** Open only the notes the day lines point to, and write from their entries and the Brain Dumps. Never quote or copy `summary` or `topics` into a prep, update or answer.
+- **`stale` days** (properties missing or not matching the vault): read the daily note and its entries directly, as without properties. Say in one line that `/pl-check` fixes them.
+- **No script** (another agent setup): read the daily notes' frontmatter yourself. Treat a processed note without properties as `stale`.
+- **Never "not found" from properties alone.** Before saying something is not in the vault, search the notes themselves.
