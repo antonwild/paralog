@@ -11,6 +11,7 @@ This is an Obsidian vault for documenting work: daily brain dumps, projects, mee
 - `3_Resources` — reference material in a few collection notes (rules section 7). No notes about people.
 - `4_Archive` — finished work, only via the `pl-archive` skill.
 - `_system` — rules, config, templates.
+- `Journal.base` — Obsidian Bases table of the daily notes and their properties (rules section 12). The user's file: agents do not write here.
 - `Tasks.md` — only with `tasks_plugin: on`: the live list of all open tasks. Agents do not write here.
 
 ## Skills
@@ -32,6 +33,7 @@ This is an Obsidian vault for documenting work: daily brain dumps, projects, mee
 3. Facts only — never invent names, dates or numbers. Ask when unsure.
 4. **Your own work only.** No notes about people. Colleagues appear only as plain-text names inside work entries. Never count, rank or report on people. See rules section 6.
 5. **Write as little as possible, in simple English.** Short sentences, one fact per line. See rules section 2a.
-6. **Tasks plugin optional:** if `tasks_plugin: on` in the config, tasks follow rules section 11.
-7. **Ask with the interactive question tool** (`AskUserQuestion` in Claude Code), never in plain chat text. See rules section 8.
-8. Git: Claude Code commits automatically (hook). Other agents commit after writing. Push only with `git_push: on`. See rules section 9.
+6. **Daily properties:** a processed daily note gets the properties of rules section 12. Never a property about people.
+7. **Tasks plugin optional:** if `tasks_plugin: on` in the config, tasks follow rules section 11.
+8. **Ask with the interactive question tool** (`AskUserQuestion` in Claude Code), never in plain chat text. See rules section 8.
+9. Git: Claude Code commits automatically (hook). Other agents commit after writing. Push only with `git_push: on`. See rules section 9.

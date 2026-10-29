@@ -9,6 +9,8 @@
 #          links    [[links]] to notes that do not exist (date links are ignored)
 #          meetings project meetings outside their project's Meetings folder
 #          tasks    Tasks plugin setup, only with tasks_plugin: on (rules section 11)
+#          props    processed daily notes whose properties are missing or differ from the vault (rules section 12)
+#          people   properties about people in any note (rules section 6)
 # Judgment checks (duplicate tasks, stale items, personal data) are left to the agent.
 
 set -u
@@ -16,6 +18,7 @@ if [ $# -ne 1 ] || [ ! -f "$1/_system/rules.md" ]; then
   echo "Usage: check.sh <vault-folder>   (a vault set up with /pl-setup)"
   exit 2
 fi
+SCRIPTS="$(cd "$(dirname "$0")" && pwd)"
 cd "$1" || exit 2
 
 OUT="$(mktemp)"; NAMES="$(mktemp)"
@@ -120,6 +123,17 @@ if grep -q '^tasks_plugin: on' _system/config.md 2>/dev/null; then
     done >> "$OUT"
   rm -f "$TAGS"
 fi
+
+# 6. props: processed daily notes carry the properties of rules section 12, and they match the vault
+bash "$SCRIPTS/props.sh" . --check >> "$OUT"
+
+# 7. people: no property about people, in any note (rules section 6)
+notes | xargs -0 awk '
+  FNR == 1 { fm = ($0 == "---"); next }
+  fm && $0 == "---" { fm = 0; next }
+  fm && tolower($0) ~ /^(people|person|persons|attendees|participants|colleagues|names|who|with):/ {
+    k = $0; sub(/:.*/, "", k); print "people " FILENAME ": property \"" k "\" lists people. No people properties (rules section 6)."
+  }' >> "$OUT"
 
 sort -u "$OUT"
 [ -s "$OUT" ] && exit 1

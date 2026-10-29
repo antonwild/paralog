@@ -29,6 +29,8 @@ for dir in .claude/skills .agents/skills; do
       rm -rf "${VAULT:?}/$dir/$name"
       cp -R "${skill%/}" "$VAULT/$dir/$name"
     else
+      # a copied skill (e.g. from npx skills) is a real folder: replace it, or ln would link inside it
+      [ -d "$VAULT/$dir/$name" ] && [ ! -L "$VAULT/$dir/$name" ] && rm -rf "${VAULT:?}/$dir/$name"
       ln -sfn "${skill%/}" "$VAULT/$dir/$name"
     fi
   done

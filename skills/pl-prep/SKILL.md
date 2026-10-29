@@ -39,15 +39,17 @@ Match the name against note names and `aliases`. If unclear, ask with the intera
 
 ## Step 2 — Collect
 
+**Day lines first:** run `bash "<skills folder>/pl-setup/scripts/props.sh" "<vault>" --days <window start> <today>` (the `pl-setup` skill sits next to this skill's folder). It prints one line per day: counts, links and topics (rules section 12, *Using the properties*). Use it to pick the notes and entries to read below. Take the content from the entries, never from `summary` or `topics`. For a `stale` day, read its daily note and search the vault for its date link. If days are `todo`, say in one line that they are not filed yet and suggest `/pl-daily`.
+
 **Manager:**
-1. **Milestones and Wins** in `2_Areas/Career - Wins.md` inside the window.
-2. **Project progress:** each project's `**Current:**` line plus Timeline and Decisions entries inside the window. Also projects archived inside the window.
+1. **Milestones and Wins** in `2_Areas/Career - Wins.md` inside the window (the days with `wins` or `milestones` above 0).
+2. **Project progress:** each active project's `**Current:**` line. Timeline and Decisions entries inside the window for the projects in the day lines' `projects`, including projects archived inside the window.
 3. **Needs input:** every open task with `#for-manager` anywhere in the vault (any date). Also blockers in the window that need the manager's approval or help.
 4. The open tasks of the meeting note (rules section 2, rule 5).
 5. Review and promotion mode: the goals of the window's year(s) in `2_Areas/Career - Goals.md`, with their status, and which Milestones and Wins link to each (`*Goal:*`).
 
 **Meeting or project:**
-1. **Updates:** entries inside the window in the target note, or in the projects linked from it.
+1. **Updates:** entries inside the window in the target note, or in the projects linked from it. The days whose `projects` or `meetings` name the target show where they are.
 2. **Open items:** the open tasks of the target note (rules section 2, rule 5), and open tasks anywhere that link to the target.
 3. **Decisions** inside the window that concern the target.
 4. For a project: also the Log and Decisions of its `Meetings` notes. For a project meeting: also its project's `**Current:**` line.
@@ -77,7 +79,7 @@ Follow the writing style (rules section 2a). One line per point. Leave out empty
 For the manager: list every Milestone first, then the **3–5 strongest Wins**. Not every Win.
 For others: **Highlights** only if there is real progress to show.
 
-**Review mode** (manager only) — built on Milestones and goals. With goals: one block per goal, then the rest as themes. Without goals: 3–5 themes. Never list single Wins.
+**Review mode** (manager only) — built on Milestones and goals. With goals: one block per goal, then the rest as themes. Without goals: 3–5 themes. Never list single Wins. To find themes, start from the `topics` of the days with Wins. Name each theme from the Wins themselves.
 
 ```markdown
 ### Review 2026 — prepared [[2026-12-10]]

@@ -1,0 +1,101 @@
+# Your daily notes as a table (Obsidian Bases, Obsidian 1.9 or newer).
+# /pl-daily fills the properties of each day (rules section 12). Tabs at the top switch the view.
+# Filter by project: open a view, then Filter → projects → contains → the project.
+# This file is yours: change views as you like. paralog never overwrites it.
+filters:
+  and:
+    - file.inFolder("0_Daily")
+    - type == "daily"
+properties:
+  date:
+    displayName: Date
+  summary:
+    displayName: Summary
+  projects:
+    displayName: Projects
+  meetings:
+    displayName: Meetings
+  areas:
+    displayName: Areas
+  topics:
+    displayName: Topics
+  decisions:
+    displayName: Decisions
+  wins:
+    displayName: Wins
+  milestones:
+    displayName: Milestones
+  for_manager:
+    displayName: For manager
+views:
+  - type: table
+    name: All days
+    order:
+      - file.name
+      - summary
+      - projects
+      - meetings
+      - topics
+      - decisions
+      - wins
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: Last 14 days
+    filters:
+      and:
+        - date >= today() - "14d"
+    order:
+      - file.name
+      - summary
+      - projects
+      - meetings
+      - areas
+      - decisions
+      - wins
+      - for_manager
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: Decisions and wins
+    filters:
+      or:
+        - decisions > 0
+        - wins > 0
+        - milestones > 0
+    order:
+      - file.name
+      - summary
+      - projects
+      - decisions
+      - wins
+      - milestones
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: For manager
+    filters:
+      and:
+        - for_manager > 0
+    order:
+      - file.name
+      - summary
+      - projects
+      - areas
+      - for_manager
+    sort:
+      - property: date
+        direction: DESC
+  - type: table
+    name: Not processed
+    filters:
+      and:
+        - processed != true
+    order:
+      - file.name
+    sort:
+      - property: date
+        direction: DESC
