@@ -10,6 +10,8 @@ user-invocable: false
 
 Read `_system/rules.md` and `_system/config.md`. Never create a note about a person: say no in one line and point to rules section 6.
 
+**Style:** write everything (notes, emails, replies in chat) in the writing style of rules section 2a, in every language: short sentences, common words, active voice.
+
 ## Step 1 — Decide type and name
 
 | Type | Path | Template |
@@ -35,7 +37,7 @@ Search the **whole vault** (including `4_Archive`) for a note with the same name
 1. Copy the template. Replace `{{title}}` with the name and `{{date:YYYY-MM-DD}}` with today's date.
 2. Fill in what is known (goal, stakeholders, role, cadence, ...). Leave unknown fields empty. Never guess.
 3. Add short names to `aliases` (e.g. `Project Phoenix` → `[Phoenix]`).
-4. For a meeting: set `project: "[[Project Name]]"` (empty if none) and `cadence` (e.g. `daily`, `weekly`; empty for one-off). A one-off meeting that already happened gets `status: ended`.
+4. For a meeting: set `project: "[[Project Name]]"` (empty if none) and `cadence` (e.g. `daily`, `weekly`; empty for one-off). Set `next` only when the date of the next occurrence is known (rules section 1, Meetings). A one-off meeting that already happened gets `status: ended`.
 5. With `tasks_plugin: on`: set `task_tag` (rules section 11).
 6. If the note is created from a daily dump, add a first log entry: `- [[<date>]] — **Created.** <one line of context>`.
 

@@ -11,6 +11,8 @@ A short email every Friday: the manager sees progress without asking, and the us
 
 Read `_system/rules.md` and `_system/config.md`.
 
+**Style:** write everything (notes, emails, replies in chat) in the writing style of rules section 2a, in every language: short sentences, common words, active voice.
+
 ## Step 1 — Window
 
 Default: Monday of the current week to today. If today is Monday, the previous week (Monday–Friday). If the user names a week ("last week", "week 41"), use it. An entry is in the window when its leading `[[YYYY-MM-DD]]` falls inside it.
@@ -75,8 +77,8 @@ Alex
 
 ## Step 5 — Save and show
 
-1. Add the draft to today's daily note under `## Weekly Update` (create the heading at the end if missing), as `### Week 41 — draft`. If the heading already holds a draft, add the new one below it with a `---` line between them (rules section 2, rule 10).
-2. Show the draft in chat, ready to copy.
+1. Add the draft to today's daily note under `## Weekly Update` (create the heading at the end if missing), as `### Week 41 — draft`. If the heading already holds a draft, add the new one above it with a `---` line between them (rules section 2, rule 10: newest on top).
+2. Show the draft in chat, ready to copy. End with one line `Next: …` if the vault shows a clear next step (rules section 13), e.g. "Next: `/pl-archive Invoice Automation` — its status says it is done."
 3. Tell the user in one line which active projects had no entry for 14 days, if any: the active projects that are in no `projects` of `props.sh --days <today minus 13 days> <today>`. Not in the email.
 4. When the user says it was sent (now or in a later dump), log it in the `manager_meeting_note` `## Log`: `- [[<date sent>]] — **Weekly update sent:** <subject>.` and change `— draft` to `— sent <date>`.
 

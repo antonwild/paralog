@@ -9,6 +9,8 @@ description: Draw a timeline chart (Mermaid, timeline LR, no custom theme) of a 
 
 Read `_system/rules.md` and `_system/config.md`. The chart format is in rules section 10. Follow it exactly.
 
+**Style:** write everything (notes, emails, replies in chat) in the writing style of rules section 2a, in every language: short sentences, common words, active voice.
+
 ## Step 1 — Target and window
 
 **Target:** a project, area or meeting note, or a topic. Match the name against note names and `aliases`, including `4_Archive`. If unclear, ask with the interactive question tool (rules section 8).

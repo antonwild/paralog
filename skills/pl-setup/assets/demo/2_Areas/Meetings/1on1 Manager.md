@@ -2,6 +2,7 @@
 type: meeting
 project: 
 cadence: every 2 weeks
+next: 2026-10-20
 status: active
 aliases: [1on1, One on One]
 ---
@@ -26,10 +27,10 @@ aliases: [1on1, One on One]
 
 ## Log
 ### 2026-10
+- [[2026-10-09]] — **Weekly update sent:** Weekly update, week 41 (2026-10-05 to 2026-10-09).
 - [[2026-10-06]] — **1:1.**
   - License budget approved.
   - My manager gave positive feedback on the Invoice Automation UAT.
-- [[2026-10-09]] — **Weekly update sent:** Weekly update, week 41 (2026-10-05 to 2026-10-09).
 
 ## Decisions
 ### 2026-10

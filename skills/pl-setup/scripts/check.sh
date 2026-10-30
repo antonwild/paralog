@@ -11,6 +11,7 @@
 #          tasks    Tasks plugin setup, only with tasks_plugin: on (rules section 11)
 #          props    processed daily notes whose properties are missing or differ from the vault (rules section 12)
 #          people   properties about people in any note (rules section 6)
+#          order    log sections that are not newest first (rules section 2, rule 11). Fix: order.sh <vault> --fix
 # Judgment checks (duplicate tasks, stale items, personal data) are left to the agent.
 
 set -u
@@ -134,6 +135,9 @@ notes | xargs -0 awk '
   fm && tolower($0) ~ /^(people|person|persons|attendees|participants|colleagues|names|who|with):/ {
     k = $0; sub(/:.*/, "", k); print "people " FILENAME ": property \"" k "\" lists people. No people properties (rules section 6)."
   }' >> "$OUT"
+
+# 8. order: log sections newest first (rules section 2, rule 11)
+bash "$SCRIPTS/order.sh" . >> "$OUT"
 
 sort -u "$OUT"
 [ -s "$OUT" ] && exit 1

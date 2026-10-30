@@ -7,7 +7,7 @@ description: Set up a new paralog vault (PARA folders, rules, templates, config,
 
 The vault is the folder the agent was opened in (the working directory). This skill's folder holds `scripts/scaffold.sh` and the vault files in `assets/`. In Claude Code, the skill folder is the "Base directory" shown when the skill loads.
 
-Ask every question with the interactive question tool (`AskUserQuestion` in Claude Code), never in plain chat text. Recommended option first. For free-text answers (name), offer `Skip for now` and let the user type the value as the free answer. Follow the writing style: short, simple English.
+Ask every question with the interactive question tool (`AskUserQuestion` in Claude Code), never in plain chat text. Recommended option first. For free-text answers (name), offer `Skip for now` and let the user type the value as the free answer. Follow the writing style of rules section 2a: short sentences and common words, in the user's language.
 
 ## Step 1 — New, demo or update?
 
@@ -54,7 +54,8 @@ The demo vault holds three weeks of made-up work (`assets/demo/README.md`). It n
 4. Ask: `Update (Recommended)` / `Skip`. In the description write: "Framework files are replaced. Your notes and settings stay. Old versions stay in git history." If the vault has no git, say instead that old versions are lost, and recommend `Skip` for templates the user changed.
 5. On update: run the script with `--update`. New config keys are added with their default value; tell the user each new key in one line with what it does.
 6. **Daily properties (new in 0.2.0):** if `bash "<skill folder>/scripts/check.sh" "<vault>"` prints lines with `has no properties yet`, say in one line: "Your older daily notes have no properties yet. Run `/pl-check` to fill them in, then open `Journal.base` in Obsidian."
-7. **Tasks plugin switched:** if the user changed `tasks_plugin` in the config since the last update, the update brings the matching templates. Notes still exactly as paralog created them (e.g. a new `1on1 Manager`) switch too. Notes with your content keep their old `## Open Items`. Suggest `/pl-check` to bring them in line.
+7. **Newest first (new in 0.3.0):** if `check.sh` prints `order` lines, say in one line: "Your logs list the oldest entry first. Run `/pl-check` to sort them newest first. It only moves lines."
+8. **Tasks plugin switched:** if the user changed `tasks_plugin` in the config since the last update, the update brings the matching templates. Notes still exactly as paralog created them (e.g. a new `1on1 Manager`) switch too. Notes with your content keep their old `## Open Items`. Suggest `/pl-check` to bring them in line.
 
 ## Step 6 — Report
 

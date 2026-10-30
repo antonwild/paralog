@@ -39,6 +39,19 @@ You can change all settings later in `_system/config.md`. Run `/pl-setup` again 
 
 Run `/pl-daily` again later the same day if you add more. It files only the new parts.
 
+**Next morning:** open the daily note. `/pl-daily` wrote a short plan under `## Today` the evening before:
+```markdown
+## Today
+*Planned [[2026-10-28]] by /pl-daily. Replaced on the next run.*
+
+**Meetings**
+- [[Phoenix Weekly]] — no prep since the last meeting. Run `/pl-prep Phoenix Weekly`.
+
+**Follow up**
+- [[Vendor Workshop 2026-10-28]] — no recap yet. Run `/pl-recap Vendor Workshop 2026-10-28`.
+```
+It knows a meeting is today when you said so in a dump ("steering committee next Tuesday"), or from the meeting's `cadence`. In guided mode, `/pl-daily` asks for the meetings of the next work day.
+
 **No time to dictate?** Just run `/pl-daily` on an empty note. It asks 4 short questions (what you finished, meetings, decisions and tasks, blockers) and up to 2 about open items, e.g. *"Tom's data cleanup is due 2026-10-31 — any news?"* Your answers become the Brain Dump.
 
 ---

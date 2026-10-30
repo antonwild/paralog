@@ -3,6 +3,17 @@
 The version is `paralog_version` in `skills/pl-setup/assets/vault/_system/rules.md`.
 Bump it when a release changes framework files (rules, templates, AGENTS.md, hook), so `/pl-daily` tells users to run `/pl-setup`.
 
+## 0.3.0 — 2026-10-30
+
+- **`## Today` in the daily note:** at the end of each run, `/pl-daily` writes a short plan into the next work day's note: meetings to prepare, recaps and drafts to send, tasks due, and the next commands to run (rules section 13). Read it in the morning. No new command. The section is a generated view: the next run replaces it. Plain bullets only, no checkboxes, never grouped by person.
+- **`next` property for meetings:** the date of the next occurrence. `/pl-daily` sets it from the dump ("steering committee next Tuesday") or from a fixed `cadence`. Never guessed (rules section 1, Meetings). Guided mode asks one more question: the meetings of the next work day.
+- **`Next:` line:** `/pl-prep`, `/pl-recap` and `/pl-week` end their report with one suggested next step when the vault shows one.
+- **Newest first:** `Timeline`, `Log`, `Decisions`, `Wins`, `Milestones`, goal lines and blocks (`Prep`, `Recaps`, `Weekly Update`, a re-run `Summary`) put the newest entry on top, like a CV. Month headings too: the newest month first (rules section 2, rules 2, 10 and 11). The timeline chart still reads oldest first, from left to right.
+- **One entry per date:** in `Timeline` and `Log`, all items of one date share one entry: the date line, then one bullet per item. **Created** stays a line of its own (rules section 3).
+- **`/pl-check` sorts old logs:** the new check `order` (script `pl-setup/scripts/order.sh`) finds sections with the oldest entry on top. The fix sorts them and only moves lines. Older entries of one date stay separate.
+- **Writing style for every language:** rules section 2a now applies to notes, emails and chat in every language, not only English. New rules from Simplified Technical English (ASD-STE100): verbs instead of nouns, keep the certainty of the source, no semicolons, no long noun chains, lists for 3 or more steps. Every skill points to it in Step 0.
+- Run `/pl-setup` to update the rules and templates, then `/pl-check` to sort your logs newest first. Existing daily notes and meetings get `## Today` and `next` when `/pl-daily` needs them.
+
 ## 0.2.0 — 2026-10-24
 
 - **Daily properties:** `/pl-daily` writes properties into each processed daily note: `summary`, `projects`, `meetings`, `areas`, `topics` and the counts `decisions`, `wins`, `milestones`, `for_manager` (rules section 12). Links and counts are derived from the vault by `pl-setup/scripts/props.sh`. Topics are reused before new ones are added. `summary` never names people.

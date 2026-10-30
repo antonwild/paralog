@@ -12,8 +12,8 @@ aliases: [Vendors, Contracts]
 
 ## Log
 ### 2026-10
-- [[2026-10-12]] — **Created.** The old CRM contract ends 2026-12-31. [[Project Phoenix]] phase 1 goes live 2026-12-01, support follows later. A 6-month extension may be needed as a fallback.
 - [[2026-10-13]] — Jonas Weber (Procurement) sent the renewal terms: 6 more months cost 18,000 EUR.
+- [[2026-10-12]] — **Created.** The old CRM contract ends 2026-12-31. [[Project Phoenix]] phase 1 goes live 2026-12-01, support follows later. A 6-month extension may be needed as a fallback.
 
 ## Decisions
 

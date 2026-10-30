@@ -1,7 +1,7 @@
 ---
 type: system
 # Set by /pl-setup. Do not change by hand.
-paralog_version: 0.2.0
+paralog_version: 0.3.0
 ---
 # Vault Rules
 
@@ -12,7 +12,7 @@ Settings (name, languages, Tasks plugin, ...) live in [[config]].
 
 | Folder | Holds | Create a new note when… | Do NOT put here |
 |---|---|---|---|
-| `0_Daily` | One note per day (created by Obsidian's daily notes or the Calendar plugin). Raw **Brain Dump** + agent **Summary** (+ **Recaps** from `/pl-recap`, + **Weekly Update** from `/pl-week`, + **Tasks** if `tasks_plugin: on`). | Never by hand — the daily note for the date. | Anything else. |
+| `0_Daily` | One note per day (created by Obsidian's daily notes or the Calendar plugin). **Today** plan from `/pl-daily` (section 13) + raw **Brain Dump** + agent **Summary** (+ **Recaps** from `/pl-recap`, + **Weekly Update** from `/pl-week`, + **Tasks** if `tasks_plugin: on`). | Never by hand — the daily note for the date. | Anything else. |
 | `1_Projects` | Work with a **goal and an end**. One folder per project: `1_Projects/<Folder-Name>/<Name>.md`, its meetings in `1_Projects/<Folder-Name>/Meetings/`. | A piece of work with an outcome that spans more than one day, is mentioned as ongoing, or the user calls it a project. | Single tasks, one-off questions. |
 | `2_Areas` | Things with **no end date**: ongoing responsibilities (hiring, on-call), `Career - Wins`, `Career - Goals`. General meetings (no project) in `2_Areas/Meetings/`. One file each. | An ongoing responsibility shows up. | Meetings of a project — those go into the project's `Meetings` folder. |
 | `3_Resources` | Reference material in a few broad **collection notes** (see section 7). Flat — no subfolders. | Almost never: add to an existing collection instead. See section 7. | Events, decisions, progress. |
@@ -28,6 +28,7 @@ Settings (name, languages, Tasks plugin, ...) live in [[config]].
 - Create the `Meetings` folder with the first meeting. No empty folders.
 - **Status:** `active` while the series runs. A series that stops gets `status: ended` and stays in place; it moves with its project at archive time. A one-off meeting gets `status: ended` once it has happened. General meetings that ended can be moved to `4_Archive` with `/pl-archive`.
 - Each occurrence is one entry in the meeting's `## Log`. Important results (decisions, milestones) also get one line in the project `Timeline`.
+- **Next date:** the `next` property holds the date of the next occurrence (`next: 2026-10-22`), or stays empty. Set it only from a fact: the dump names the date ("steering committee next Tuesday"), or the `cadence` is a fixed number of days and an occurrence was just logged (weekly: +7 days, every 2 weeks: +14). Never guess. The `## Today` section uses it (section 13).
 
 Rule of thumb: **Did something happen?** → log it in a project, area or meeting.
 **Is it something to look up later?** → resource.
@@ -35,37 +36,40 @@ Rule of thumb: **Did something happen?** → log it in a project, area or meetin
 ## 2. Writing rules
 
 1. **The Brain Dump is sacred.** Never edit, fix, reformat or delete anything under `## Brain Dump`. It is the dated source of truth.
-2. **Logs are append-only** (projects, areas, meetings — not resources, see section 7). Add new lines at the end of their month in `Timeline`, `Log`, `Decisions`, `Wins` (rule 11). Never rewrite or delete old entries. If something was wrong, add a correction entry.
+2. **Logs are append-only** (projects, areas, meetings — not resources, see section 7). Add new entries **at the top** of their month in `Timeline`, `Log`, `Decisions`, `Wins` and at the top of `Milestones` (rule 11: newest first). Never rewrite or delete old entries. If something was wrong, add a correction entry. One exception: a later run of the same day adds its items to that day's entry (section 3, *One entry per date*).
 3. **Every log entry starts with its source date as a link** to the daily note, e.g. `- [[2026-10-17]] — ...`. This is what makes the vault work as evidence.
 4. **Facts, not interpretation.** Write what was said, decided, or done, and by whom. Never invent names, dates, numbers or reasons. If the dictation is unclear, write `(unclear in dictation)` instead of guessing.
 5. **Each task exists once.** Put it in the `## Open Items` of the note it belongs to (usually the project). Do not copy it into other notes — `#for-manager` is enough for `pl-prep` to find it.
    **The open tasks of a note** are its `- [ ]` lines in `## Open Items`. For a project, add the open tasks of its `Meetings` notes. With `tasks_plugin: on`, tasks live in the daily notes instead: use section 11 for where to write, find and close them. Skills say "open tasks of a note" and mean this rule.
 6. **Link generously.** Link projects, areas and meetings with `[[Name]]` the first time they appear in an entry. Never link people: names are plain text (section 6).
-7. **Only three things may be overwritten** in logs: the single `**Current:**` line under `## Status` in a project, the `**Status:**` line of a goal (section 3b), and ticking a task checkbox (`- [ ]` → `- [x]`) when it is resolved. When ticking, append the result and source: `- [x] Ask about budget #for-manager → approved ([[2026-10-20]])`. With `tasks_plugin: on` use the format in section 11. Exceptions: the `## Timeline Chart` section is a generated view, not a log. Agents replace it as a whole (section 10). The properties of a daily note are an index, not a log. Agents replace them as a whole (section 12).
+7. **Only three things may be overwritten** in logs: the single `**Current:**` line under `## Status` in a project, the `**Status:**` line of a goal (section 3b), and ticking a task checkbox (`- [ ]` → `- [x]`) when it is resolved. When ticking, append the result and source: `- [x] Ask about budget #for-manager → approved ([[2026-10-20]])`. With `tasks_plugin: on` use the format in section 11. Exceptions: the `## Timeline Chart` section is a generated view, not a log. Agents replace it as a whole (section 10). The properties of a daily note are an index, not a log. Agents replace them as a whole (section 12). The `## Today` section of a daily note is a generated view too (section 13).
 8. **Dates** are always `YYYY-MM-DD`.
 9. **Language:** write processed notes in the `note_language` from [[config]]. The dictation may be in any language, or mixed — understand all of it. Keep proper names, quotes and terms without a clean translation in the original language.
-10. **Dividers between blocks.** A section that holds several blocks (`## Prep`, `## Handover`, `## Recaps`, `## Weekly Update`), each starting with its own `###` heading, separates the blocks with a line `---`. Keep a blank line before and after it: `---` directly under a text line turns that line into a heading. No divider before the first or after the last block. No dividers between single-line log entries or month headings.
-11. **Month headings.** In `Timeline`, `Log`, `Decisions` and `Wins`, entries sit under a `### YYYY-MM` heading, oldest month first. The month is the one in the entry's leading date link. Add the entry at the end of its month. If the month has no heading yet, add the heading at the end of the section. If the section has older entries without a heading, first put a heading for their month above them (adding a heading does not rewrite an entry). `Milestones` stay without month headings.
+10. **Dividers between blocks.** A section that holds several blocks (`## Prep`, `## Handover`, `## Recaps`, `## Weekly Update`, a re-run `## Summary`), each starting with its own `###` heading or label, has the **newest block on top** and separates the blocks with a line `---`. Keep a blank line before and after it: `---` directly under a text line turns that line into a heading. No divider before the first or after the last block. No dividers between single-line log entries or month headings.
+11. **Newest first, with month headings.** Everything with a date reads like a CV: the newest entry is on top. In `Timeline`, `Log`, `Decisions` and `Wins`, entries sit under a `### YYYY-MM` heading, **newest month first**. The month is the one in the entry's leading date link. Add the entry at the top of its month. If the month has no heading yet, add the heading at the top of the section. If the section has older entries without a heading, first put a heading for their month above them (adding a heading does not rewrite an entry). `Milestones` stay without month headings, newest first. Older vaults have sections with the oldest entry on top: `/pl-check` finds them and sorts them (it only moves lines). Only the timeline chart (section 10) and the evidence answer of `/pl-evidence` read oldest first, like a story.
 
 ## 2a. Writing style
 
-Applies to everything agents write: notes, summaries and replies in chat.
+Applies to everything agents write: notes, summaries, emails and replies in chat. **It applies in every language**: the `note_language`, each of the `email_languages` and the language of the chat. The rules are based on Simplified Technical English (ASD-STE100), a standard for text that nobody may misread.
 
-1. **As short as possible.** Write only what is needed. One fact per line. Leave out what the reader already knows.
-2. **Short sentences.** Maximum 20 words. One idea per sentence.
-3. **Simple English.** Use common words. No idioms, no jargon (except the company terms in [[Glossary]]).
-4. **Active voice.** "Paul fixed the bug", not "the bug was fixed".
-5. **Exact.** Write numbers, dates and names exactly. No vague words like "soon", "some" or "various".
-6. **One word for one thing.** Always use the same term for the same thing (e.g. always "decision", not also "agreement").
-7. **No filler.** No "basically", "in order to", "it is important to note", no praise, no hedging.
-8. **Several facts, several lines.** In logs, an entry with more than one fact gets nested bullets (section 3).
+1. **As short as possible.** Write only what is needed. One fact per line. Leave out what the reader already knows. Stop when the text is clear, not when it is shortest.
+2. **Short sentences.** Maximum 20 words. One idea per sentence. One instruction per sentence. In languages with long words (e.g. German), keep the sentence just as simple.
+3. **Common words.** In every language, use the most common word for a thing. No idioms, no jargon, no rare or formal words. Company terms from [[Glossary]] are fine.
+4. **Active voice.** Name who does it: "Paul fixed the bug", not "the bug was fixed".
+5. **Verbs, not nouns.** "Tom checks the data", not "Tom performs a check of the data". Use one plain verb, not a verb of several words: "start", not "kick off".
+6. **Exact.** Write numbers, dates and names exactly. No vague words like "soon", "some" or "various".
+7. **One word for one thing.** Always use the same term for the same thing (e.g. always "decision", not also "agreement").
+8. **Keep the certainty.** If the source says "maybe" or "planned", keep it. Never turn "may be late" into "is late". Never add a reason, number or cause the source does not give.
+9. **No filler.** No "basically", "in order to", "it is important to note". No praise, no marketing words ("seamless", "powerful"), no stacked hedges.
+10. **Simple sentence shape.** No semicolons: write two sentences. No chains of more than 3 nouns. Use a list for 3 or more steps or conditions.
+11. **Several facts, several lines.** In logs, an entry with more than one fact gets nested bullets (section 3).
 
-Exceptions: the Brain Dump and quotes stay exactly as the user said them.
+Exceptions: the Brain Dump and quotes stay exactly as the user said them. Proper names and company terms stay as they are.
 
 ## 3. Entry formats
 
 ```markdown
-- [[2026-10-17]] — Kickoff with Sarah Miller; scope agreed for phase 1.
+- [[2026-10-17]] — **Kickoff** with Sarah Miller. Scope agreed for phase 1.
 - [[2026-10-17]] **Decision:** Go-live moves to 2026-11-03. *Why:* vendor delay. *Who:* Sarah Miller, me.
 - [[2026-10-17]] **Win:** Fixed the export bug that blocked 3 teams. *Impact:* release unblocked. → [[Project Phoenix]] *Goal:* [[Career - Goals#Ship reliable releases]]
 - [[2026-11-03]] **Milestone:** Phase 1 of [[Project Phoenix]] went live for 400 sales users. *My part:* led data migration and cutover. *Impact:* old CRM switched off for sales.
@@ -85,6 +89,19 @@ Exceptions: the Brain Dump and quotes stay exactly as the user said them.
 ```
 
 Decisions, Wins and Milestones stay on one line, with their *Why*, *Who*, *Impact* fields.
+
+**One entry per date.** In `Timeline` and `Log`, all items of one date go into one entry: a line with only the date link, then one bullet per item, in the order they happened. The facts of an item go one level deeper. **Created** stays a line of its own, because it marks the start. One item on a date stays on the dated line, as above.
+
+```markdown
+- [[2026-10-30]]
+  - IT proposes an agentic version of the tool.
+    - Users can chat with their data and explore negotiation strategies.
+    - Users asked for this for 6 months.
+  - **Decision:** Pilot with 5 users from 2026-11-09.
+- [[2026-10-30]] — **Created.** The project was already running. A stable version is live.
+```
+
+In `Decisions`, `Wins` and `Milestones`, each item keeps its own dated line: they are counted (section 12).
 
 - **Decision** — anything agreed or decided, including small ones. Include *Why* and *Who* when known. A decision goes into exactly one `## Decisions` section: the meeting's, if it was made in a meeting, else the project's or area's. A line in the project `Timeline` is fine.
 - **Win** — something the user achieved or contributed to: finished work, solved problems, helped others, positive feedback received. Logged in `Career - Wins` → `## Wins` (and linked to the project). Describe the impact if it was mentioned; do not exaggerate. Add *Goal:* when it clearly serves a goal (section 3b).
@@ -118,7 +135,8 @@ Everything else is a **Win** (a solved problem, a good result in a meeting, help
 - [[2026-01-20]] — Agreed with my manager.
 ```
 
-- **Status:** `active`, `reached` or `dropped`. It is the only line that may be overwritten. Every change also gets a dated line below it (`- [[2026-06-30]] — Dropped: team reorganised.`). Never delete a goal.
+- **Status:** `active`, `reached` or `dropped`. It is the only line that may be overwritten. Every change also gets a dated line, directly below the `**Status:**` line, newest first (`- [[2026-06-30]] — Dropped: team reorganised.`). Never delete a goal.
+- The newest year is on top: add `## 2027` above `## 2026`.
 - Goal headings are unique in the note. If a goal repeats next year, add the year: `### Ship reliable releases 2027`.
 - **Linking:** a Win or Milestone gets `*Goal:* [[Career - Goals#<Goal>]]` at the end, only when the dump makes the link clear. Never stretch a Win to fit a goal. No goal is fine.
 - **New or changed goals** come from the dump ("my manager and I agreed my goals…") or from the user editing the note. Agents ask before writing a goal.
@@ -229,7 +247,7 @@ timeline LR
 
 - **Always** `timeline LR` as the first line. **No theme:** no `%%{init}%%` line, no `config` block, no colors or styles. Obsidian draws the chart in the colors of its own theme.
 - **When:** `/pl-timeline` always draws one. Other skills add one only when there are at least 3 dates.
-- **Source:** only entries with a `[[YYYY-MM-DD]]` date. Oldest first. Never invent or estimate a date.
+- **Source:** only entries with a `[[YYYY-MM-DD]]` date. The chart reads oldest first, from left to right, even though the notes list the newest first. Never invent or estimate a date.
 - **Content:** decisions, milestones, status changes, go-lives, start and end. Leave out routine entries (e.g. "weekly met, no news"). Maximum 10 dates (the chart gets wide). If there are more, keep the most important and say how many were left out.
 - **One `section` per month** (`YYYY-MM`). Several events on one date: one line each, starting with `:` (see example).
 - **Prefix** for type: `Decision - `, `Milestone - `, `Win - `. Plain events have no prefix.
@@ -368,3 +386,62 @@ Skills read the properties to **find** days and notes. They never take content f
 - **`stale` days** (properties missing or not matching the vault): read the daily note and its entries directly, as without properties. Say in one line that `/pl-check` fixes them.
 - **No script** (another agent setup): read the daily notes' frontmatter yourself. Treat a processed note without properties as `stale`.
 - **Never "not found" from properties alone.** Before saying something is not in the vault, search the notes themselves.
+
+## 13. Today section
+
+The daily note starts with `## Today`: a short plan for the day. `/pl-daily` writes it at the end of its run into the **next work day's** note. The user reads it in the morning. It points to notes and commands. It is not a log, and it holds no new facts.
+
+```markdown
+## Today
+*Planned [[2026-10-28]] by /pl-daily. Replaced on the next run.*
+
+**Meetings**
+- [[Phoenix Weekly]] — no prep since the last meeting. Run `/pl-prep Phoenix Weekly`.
+- [[1on1 Manager]] — 2 open items for your manager. Run `/pl-prep`.
+
+**Follow up**
+- [[Vendor Workshop 2026-10-28]] — no recap yet. Run `/pl-recap Vendor Workshop 2026-10-28`.
+- Weekly update week 44 is still a draft. Send it, then say "sent" in your dump.
+
+**Due**
+- Send the plan to Sarah Miller — due 2026-10-29. ([[Project Phoenix]])
+
+**Next steps**
+- 2026-10-27 is not filed yet. Run `/pl-daily 2026-10-27`.
+```
+
+### Which note
+
+- The target is the next work day (Monday to Friday) after the processed day. After Friday it is Monday.
+- Skip it when the target note has `processed: true`, or when the target date is before today and its note does not exist.
+- Create the target note from `_system/templates/Daily.md` if it does not exist.
+- The section sits directly above `## Brain Dump`. If the note has no `## Today`, add it there.
+
+### What goes in
+
+Take every line from the vault, as of the end of the run. Leave out empty groups.
+
+| Group | Line when… | Suggest |
+|---|---|---|
+| **Meetings** | A meeting note has `next` on the target date. | No prep newer than its newest `## Log` entry → `/pl-prep <meeting>`. For the `manager_meeting_note`: the number of open `#for-manager` items. |
+| **Follow up** | A meeting has a `## Log` entry from the processed day with decisions or tasks, and the day's `## Recaps` has no recap for it. | `/pl-recap <meeting>` |
+| | A recap or weekly update in a daily note of the last 7 days is still `— draft`. | Send it, then say "sent" in the dump. |
+| **Due** | An open task has a deadline on or before the target date. Only with `tasks_plugin: off` (with `on`, the `## Tasks` query of the daily note shows them). | The task text, its date and its note. |
+| **Next steps** | A work day of the last 7 days is `todo` or `none` (`props.sh --days`). | `/pl-daily <date>` |
+| | The target date is a Friday and no weekly update exists for its week. | `/pl-week` |
+| | An active project has no entry for 30 days, or its `**Current:**` line says it is done. | `/pl-archive <project>` if it is done. |
+| | paralog was updated (version check in `pl-daily`). | `/pl-setup` |
+
+### Format
+
+- First line: `*Planned [[<processed day>]] by /pl-daily. Replaced on the next run.*`
+- Plain bullets (`- `). **No checkboxes and no tags:** each task exists once (section 2, rule 5). The Today line only points to it.
+- Most important first. Maximum 8 bullets. If more, keep the ones with a command.
+- Group by meeting and project. **Never by person**, and never a list of what a colleague owes (section 6). Names stay inside the item text.
+- Nothing to show → one line: `Nothing planned. No open follow-ups.`
+- Follow the writing style (section 2a).
+
+### Rules
+
+- **Generated view.** A new run replaces the whole section. The user writes in `## Brain Dump`, not here.
+- Other skills do not change `## Today`. After they finish, they may end their chat report with one line `Next: …` when the vault shows a clear next step from the table above.
