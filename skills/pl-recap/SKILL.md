@@ -11,6 +11,8 @@ A recap the others receive in writing is strong evidence: if nobody objects, the
 
 Read `_system/rules.md` and `_system/config.md`.
 
+**Style:** write everything (notes, emails, replies in chat) in the writing style of rules section 2a, in every language: short sentences, common words, active voice.
+
 ## Step 1 — Find the meeting
 
 Use the meeting the user names, from today's daily note unless a date is given. Read the Brain Dump, the **meeting note** (in `2_Areas/Meetings/` or the project's `Meetings/` folder) and the entries filed for that date (`[[YYYY-MM-DD]]`) in the related project notes. Include the tasks of that day for the meeting or its project (rules section 2, rule 5). Take the attendees from the meeting note's **Who** line.
@@ -65,6 +67,6 @@ Alex
 
 ## Step 4 — Save and show
 
-1. Add the draft to the daily note under `## Recaps` (create the heading at the end if missing), as `### <Meeting> — draft`. If the heading already holds a recap, add the new one below it with a `---` line between them (rules section 2, rule 10).
-2. Show the draft in chat, ready to copy.
+1. Add the draft to the daily note under `## Recaps` (create the heading at the end if missing), as `### <Meeting> — draft`. If the heading already holds a recap, add the new one above it with a `---` line between them (rules section 2, rule 10: newest on top).
+2. Show the draft in chat, ready to copy. End with one line `Next: …` if the vault shows a clear next step (rules section 13), e.g. "Next: `/pl-recap Vendor Workshop 2026-10-28` — also no recap yet."
 3. When the user says it was sent (now or in a later dump), log it in the meeting note's `## Log`: `- [[<date sent>]] — **Recap sent** to Sarah Miller, Tom Becker: <subject>.` and change `— draft` to `— sent <date>`.

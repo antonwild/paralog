@@ -11,6 +11,8 @@ Find everything the vault knows about a question and present it so it is easy to
 
 Read `_system/rules.md` and `_system/config.md`.
 
+**Style:** write everything (notes, emails, replies in chat) in the writing style of rules section 2a, in every language: short sentences, common words, active voice.
+
 ## Step 1 — Understand the question
 
 Work out the **topic** (project, decision, thing), the **time range** if given ("last month", "since the kickoff"), and the **kind of answer** (a decision, who said what, when something happened, whether something was communicated).

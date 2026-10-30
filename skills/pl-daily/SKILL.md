@@ -1,6 +1,6 @@
 ---
 name: pl-daily
-description: Process a daily brain dump (often a voice dictation transcript, in any language) into the Obsidian PARA vault. Saves the raw text to the daily note, then files events, decisions, wins, tasks and resources into the right project, area and resource notes with [[links]]. Without a dump it interviews the user with a few short questions. Use when the user runs /pl-daily, pastes a transcript of their day, or asks to process or sort today's (or another day's) notes.
+description: Process a daily brain dump (often a voice dictation transcript, in any language) into the Obsidian PARA vault. Saves the raw text to the daily note, then files events, decisions, wins, tasks and resources into the right project, area and resource notes with [[links]]. Without a dump it interviews the user with a few short questions. At the end it writes the plan for the next work day (## Today: meetings to prepare, recaps to send, due tasks, next commands). Use when the user runs /pl-daily, pastes a transcript of their day, or asks to process or sort today's (or another day's) notes, or to plan the next day.
 ---
 
 # Daily — brain dump to PARA
@@ -10,6 +10,8 @@ Turn a messy brain dump into dated, linked entries in the right notes. Work from
 ## Step 0 — Load the rules
 
 Read `_system/rules.md` and `_system/config.md` first. Follow them exactly. They define folders, entry formats, naming and the people policy (section 6).
+
+**Style:** write everything (notes, emails, replies in chat) in the writing style of rules section 2a, in every language: short sentences, common words, active voice.
 
 **Version check:** compare `paralog_version` in `_system/rules.md` with the same line in `../pl-setup/assets/vault/_system/rules.md` (next to this skill's folder). If the skill's version is newer, tell the user in one line at the end: "paralog was updated — run `/pl-setup` to update the vault." Skip this if the file is not there.
 
@@ -29,8 +31,11 @@ Interview the user instead of waiting for a free dictation. Ask in **one plain c
 2. Which meetings did you have, and what came out of them?
 3. Did you decide anything or take on a task?
 4. Is anything blocked, or do you need your manager for something?
+5. Which meetings do you have on <next work day, e.g. Friday 2026-10-30>?
 
-Add at most **2 follow-up questions** from the vault, each naming its source, e.g. "Tom Becker's data cleanup for sales is due 2026-10-31 — any news?" Take them from open tasks with a deadline up to the daily note's date, and from active projects with an entry in the last 7 days. Never more than 6 questions in total.
+Add at most **2 follow-up questions** from the vault, each naming its source, e.g. "Tom Becker's data cleanup for sales is due 2026-10-31 — any news?" Take them from open tasks with a deadline up to the daily note's date, and from active projects with an entry in the last 7 days. Never more than 7 questions in total.
+
+Leave out question 5 when Step 7b will skip the Today section (rules section 13, *Which note*).
 
 When the user answers, append to `## Brain Dump`: a line `**Guided HH:MM**`, then each question in bold and the answer **exactly as given**. Skipped questions are left out. Then go on with Step 2. If the user answers "nothing" to all, write nothing and stop.
 
@@ -42,7 +47,7 @@ List every note in `1_Projects` (including each project's `Meetings`), `2_Areas`
 
 Read the whole Brain Dump. The dictation may be in any language or mixed, and may have filler words, false starts and misheard names. Pull out every item and classify it (formats in rules section 3):
 
-- **Meeting** — a meeting took place or was scheduled. Every meeting has its own note (rules section 1, Meetings): match an existing one, or propose a new one.
+- **Meeting** — a meeting took place or was scheduled. Every meeting has its own note (rules section 1, Meetings): match an existing one, or propose a new one. A planned date ("steering committee next Tuesday") becomes the meeting's `next` date.
 - **Event** — something else happened (progress, problem, conversation).
 - **Decision** — something agreed or decided.
 - **Win** — something the user achieved or contributed to.
@@ -76,18 +81,19 @@ For each new note needed whose type is in `ask_before_creating` (config), for ea
 ## Step 6 — Write
 
 1. Create the approved notes with the `pl-new-note` skill's rules (templates in `_system/templates`, unique names, aliases).
-2. Append each item to its target note under the right heading (`Timeline`/`Log`, `Decisions`, `Open Items`, `Wins`), in the formats from the rules (section 3: type word, nested bullets for several facts; section 2, rule 11: month headings). Wins go to `2_Areas/Career - Wins.md` → `## Wins`; milestones go to `## Milestones` in the same note. Each item is either a Win or a Milestone, never both. Add *Goal:* only when the dump makes the link to an active goal clear (rules section 3b). Also add a Timeline entry in the related project.
+2. Add each item to its target note under the right heading (`Timeline`/`Log`, `Decisions`, `Open Items`, `Wins`), in the formats from the rules (section 3: type word, nested bullets, **one entry per date** in `Timeline` and `Log`; section 2, rule 11: **newest first**, at the top of its month). Wins go to `2_Areas/Career - Wins.md` → `## Wins`; milestones go to `## Milestones` in the same note. Each item is either a Win or a Milestone, never both. Add *Goal:* only when the dump makes the link to an active goal clear (rules section 3b). Also add a Timeline entry in the related project.
    Approved goals go to `2_Areas/Career - Goals.md` in the format of rules section 3b.
    Meeting items go to the meeting note's `## Log` (one entry per occurrence), its `Decisions` and `Open Items`. Important results (decisions, milestones) also get one line in the project `Timeline`.
    **Tasks:** as in rules section 2, rule 5. With `tasks_plugin: on`, follow the table *What skills do with tasks* in rules section 11 (new tasks and hand-typed tasks).
 3. If the user says an earlier win was bigger than logged ("that was actually a big deal"), promote it as described in rules section 3a.
 4. Tick resolved tasks (`- [x] … → result ([[date]])`, rules section 2, rule 7). With `tasks_plugin: on`, use rules section 11.
 5. Update a project's `**Current:**` status line only if the dump clearly changes the status.
+   Set each meeting's `next` property as in rules section 1, Meetings (*Next date*): from a date in the dump, or from a fixed `cadence` after a logged occurrence. Never guess.
 6. Add confirmed misspellings of a note name to that note's `aliases`.
 
 ## Step 7 — Fill the daily Summary
 
-Under `## Summary` in the daily note write (replace the placeholder comment). On a re-run, append the new Summary below the existing one with a `---` line between them (rules section 2, rule 10):
+Under `## Summary` in the daily note write (replace the placeholder comment). On a re-run, add the new Summary above the existing one with a `---` line between them (rules section 2, rule 10: newest on top):
 
 ```markdown
 **In short:** 1–2 short sentences about the day.
@@ -112,9 +118,17 @@ Write the properties of rules section 12 into the daily note's frontmatter, afte
 3. `topics`: run `props.sh "<vault>" --topics` for the topics in use. Pick 0–5 for this day, reuse first (rules section 12).
 4. On a re-run, replace all these properties. Never add other properties.
 
+## Step 7b — Today section of the next work day
+
+Write `## Today` into the next work day's daily note, as in rules section 13. In short:
+
+1. **Target:** the next work day after this daily note's date. Skip this step when the target note has `processed: true`, or when the target date is before today and its note does not exist. Create the target note from the template if needed (Step 1, point 3).
+2. **Collect** the lines of the table in rules section 13, *What goes in*, from the vault as it is now. For the day states, run `props.sh "<vault>" --days <target minus 7 days> <processed day>`. Take every line from the vault. Never invent a meeting or a date.
+3. **Write** the section directly above `## Brain Dump`. Replace an existing `## Today` as a whole. Never touch the target note's Brain Dump.
+
 ## Step 8 — Report
 
-Tell the user in a few lines: what was filed where, what was created, what stayed unclear. Do not repeat the whole dump.
+Tell the user in a few lines: what was filed where, what was created, what stayed unclear. Do not repeat the whole dump. End with one line about the plan, e.g. "Plan for Friday 2026-10-30 in [[2026-10-30]]: 2 meetings, 1 recap to write."
 
 ## Never
 
@@ -123,3 +137,4 @@ Tell the user in a few lines: what was filed where, what was created, what staye
 - Never delete or rewrite old log entries.
 - Never write to `4_Archive` (ask the user whether to unarchive instead).
 - Never add a property about people to any note (rules section 6).
+- Never put checkboxes or tags into `## Today` (rules section 13).

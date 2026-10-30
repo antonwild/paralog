@@ -9,11 +9,13 @@ description: Archive a finished or inactive project or area in the Obsidian PARA
 
 Read `_system/rules.md` and `_system/config.md`.
 
+**Style:** write everything (notes, emails, replies in chat) in the writing style of rules section 2a, in every language: short sentences, common words, active voice.
+
 ## Step 1 — Find the target
 
 Match the user's words against note names and `aliases` in `1_Projects`, `2_Areas` (incl. `Meetings`) and `3_Resources`. If more than one note could match, or none, ask. Never archive `Career - Wins`, `Career - Goals`, `_system` or daily notes.
 
-**A project meeting** is not archived alone: set `status: ended` in the meeting note, append `- [[<today>]] — Series ended.` to its Log, and stop. It moves with its project later.
+**A project meeting** is not archived alone: set `status: ended` in the meeting note, add `- [[<today>]] — Series ended.` to the top of its Log (newest first, rules section 2, rule 11), and stop. It moves with its project later.
 
 ## Step 2 — Check and confirm
 
@@ -33,7 +35,7 @@ Ask every question below with the interactive question tool (`AskUserQuestion` i
    - **My contributions:** Linked from [[Career - Wins]] where they exist.
    ```
 2. In the frontmatter set `status: <completed|cancelled|inactive>` and `archived: <today>`.
-3. Append to the Timeline/Log: `- [[<today>]] — **Archived** (<status>).`
+3. Add to the top of the Timeline/Log: `- [[<today>]] — **Archived** (<status>).`
 4. Write or replace the `## Timeline Chart` section (rules section 10), with the archive date as the last event. The chart shows the whole history at a glance.
 5. Move it: a project's whole folder `1_Projects/<Folder-Name>/` → `4_Archive/<Folder-Name>/`; its `Meetings` folder moves with it. Set `status: ended` in its meeting notes. An area, resource or general meeting file → `4_Archive/<Name>.md`. Keep the name exactly the same, so all `[[links]]` still work.
 6. Add a line to today's daily note Summary: `- Archived [[<Name>]]`.
@@ -41,7 +43,7 @@ Ask every question below with the interactive question tool (`AskUserQuestion` i
 
 ## Unarchive
 
-If the user wants it back: move it to its original folder (project → `1_Projects/<Folder-Name>/`, area → `2_Areas/`, general meeting → `2_Areas/Meetings/`), set `status: active`, remove `archived`, keep the Closing Summary, and append `- [[<today>]] — Reactivated.`
+If the user wants it back: move it to its original folder (project → `1_Projects/<Folder-Name>/`, area → `2_Areas/`, general meeting → `2_Areas/Meetings/`), set `status: active`, remove `archived`, keep the Closing Summary, and add `- [[<today>]] — Reactivated.` to the top of the Timeline/Log.
 
 ## Report
 

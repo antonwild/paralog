@@ -14,7 +14,7 @@ Your achievements, filled in by /pl-daily and used by /pl-prep.
 
 ## Wins
 ### 2026-10
-- [[2026-10-02]] **Win:** Got the VAT rounding bug fixed by the vendor. *Impact:* the UAT was no longer blocked. → [[Invoice Automation]] *Goal:* [[Career - Goals#Automate manual Finance work]]
-- [[2026-10-05]] **Win:** Finished the data mapping for all 42 sales fields. → [[Project Phoenix]] *Goal:* [[Career - Goals#Replace the old CRM]]
-- [[2026-10-06]] **Win:** Positive feedback from my manager for unblocking Finance in the UAT. → [[Invoice Automation]] *Goal:* [[Career - Goals#Grow as a project lead]]
 - [[2026-10-13]] **Win:** Helped the support team export their open cases report from the old CRM. *Impact:* their monthly report went out on time.
+- [[2026-10-06]] **Win:** Positive feedback from my manager for unblocking Finance in the UAT. → [[Invoice Automation]] *Goal:* [[Career - Goals#Grow as a project lead]]
+- [[2026-10-05]] **Win:** Finished the data mapping for all 42 sales fields. → [[Project Phoenix]] *Goal:* [[Career - Goals#Replace the old CRM]]
+- [[2026-10-02]] **Win:** Got the VAT rounding bug fixed by the vendor. *Impact:* the UAT was no longer blocked. → [[Invoice Automation]] *Goal:* [[Career - Goals#Automate manual Finance work]]

@@ -5,7 +5,7 @@ This is an Obsidian vault for documenting work: daily brain dumps, projects, mee
 **Before writing anything, read `_system/rules.md` and `_system/config.md`.**
 
 ## Folders
-- `0_Daily` — one note per day (Obsidian daily notes). `## Brain Dump` is raw and never edited by agents. With `tasks_plugin: on`, `## Tasks` holds all task lines (rules section 11).
+- `0_Daily` — one note per day (Obsidian daily notes). `## Today` is the plan for the day, written by `pl-daily` the evening before (rules section 13). `## Brain Dump` is raw and never edited by agents. With `tasks_plugin: on`, `## Tasks` holds all task lines (rules section 11).
 - `1_Projects` — one folder per project, work with an end. Project meetings in `<project>/Meetings/`.
 - `2_Areas` — ongoing responsibilities, `Career - Wins`, `Career - Goals`. General meetings (no project) in `2_Areas/Meetings/`.
 - `3_Resources` — reference material in a few collection notes (rules section 7). No notes about people.
@@ -16,7 +16,7 @@ This is an Obsidian vault for documenting work: daily brain dumps, projects, mee
 
 ## Skills
 - `pl-setup` — set up or update the vault (folders, rules, templates, config).
-- `pl-daily` — process a brain dump into the vault. Without a dump, it interviews the user.
+- `pl-daily` — process a brain dump into the vault. Without a dump, it interviews the user. At the end, it writes `## Today` into the next work day's note.
 - `pl-check` — check the vault for problems (duplicate tasks, broken links, stale items) and offer fixes.
 - `pl-new-note` — internal: creates a project, area, meeting or resource note. Used by `pl-daily`.
 - `pl-archive` — archive or unarchive a project or area.
@@ -32,7 +32,7 @@ This is an Obsidian vault for documenting work: daily brain dumps, projects, mee
 2. Every entry starts with `[[YYYY-MM-DD]]` linking to its daily note.
 3. Facts only — never invent names, dates or numbers. Ask when unsure.
 4. **Your own work only.** No notes about people. Colleagues appear only as plain-text names inside work entries. Never count, rank or report on people. See rules section 6.
-5. **Write as little as possible, in simple English.** Short sentences, one fact per line. See rules section 2a.
+5. **Write as little as possible, in simple words, in every language.** Short sentences, common words, active voice, one fact per line. See rules section 2a.
 6. **Daily properties:** a processed daily note gets the properties of rules section 12. Never a property about people.
 7. **Tasks plugin optional:** if `tasks_plugin: on` in the config, tasks follow rules section 11.
 8. **Ask with the interactive question tool** (`AskUserQuestion` in Claude Code), never in plain chat text. See rules section 8.

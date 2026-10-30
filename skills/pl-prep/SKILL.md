@@ -11,6 +11,8 @@ Build a short, factual prep the user can present. Every point comes from the vau
 
 Read `_system/rules.md` and `_system/config.md`. Note `manager_meeting_note` and `prep_lookback_days`.
 
+**Style:** write everything (notes, emails, replies in chat) in the writing style of rules section 2a, in every language: short sentences, common words, active voice.
+
 ## Step 1 — Target, mode and time window
 
 **Nothing given** (`/pl-prep` alone) → first ask what to prepare, with the interactive question tool (rules section 8):
@@ -127,3 +129,4 @@ Rules:
 1. Insert the prep (also a review or promotion case) into the target note under `## Prep`, **newest on top**, with a `---` line between it and the older prep (rules section 2, rule 10). If the note has no `## Prep`, add it above `## Log` or `## Timeline`. If the manager meeting note does not exist, create it with the `pl-new-note` skill (meeting, no project).
 2. Show the prep in chat.
 3. Remind the user in one line: dictate the answers in the next daily dump, and `/pl-daily` closes the resolved items.
+4. End with one line `Next: …` if the vault shows a clear next step (rules section 13), e.g. "Next: `/pl-recap Phoenix Weekly` after the meeting."

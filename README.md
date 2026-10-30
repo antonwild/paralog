@@ -34,7 +34,8 @@ claude                                     # open your agent here, then run:
 
 | When                                                                                                      | Run                             |
 |-----------------------------------------------------------------------------------------------------------|---------------------------------|
-| End of the day: dictate under `## Brain Dump` in today's note, talk to your agent in the chat, or just run it and answer its questions. | `/pl-daily` |
+| Morning: read `## Today` at the top of today's note — meetings to prepare, recaps to send, what is due, the next command. | — |
+| End of the day: dictate under `## Brain Dump` in today's note, talk to your agent in the chat, or just run it and answer its questions. It also writes the next work day's `## Today`. | `/pl-daily` |
 | Before a meeting or your 1:1                                                                              | `/pl-prep [meeting or project]` |
 | After a meeting: follow-up email                                                                          | `/pl-recap [meeting]`           |
 | Friday: weekly update for your manager                                                                    | `/pl-week`                      |

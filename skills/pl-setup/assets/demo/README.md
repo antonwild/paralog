@@ -6,7 +6,7 @@ Three weeks of work of **Alex Rivera**, a project manager, from 2026-09-28 to 20
 
 | Note | Shows |
 |---|---|
-| `0_Daily/` | 15 daily notes with dictated Brain Dumps (one is half German), the Summary and the properties that `/pl-daily` wrote. `Journal.base` shows them as a table in Obsidian. 2026-10-08 has a sent recap, 2026-10-09 a sent weekly update. **2026-10-15 and 2026-10-16 are not processed yet** — try it yourself. |
+| `0_Daily/` | 15 daily notes with dictated Brain Dumps (one is half German), the Summary and the properties that `/pl-daily` wrote. `Journal.base` shows them as a table in Obsidian. 2026-10-08 has a sent recap, 2026-10-09 a sent weekly update. **2026-10-15 and 2026-10-16 are not processed yet** — try it yourself. 2026-10-15 starts with the `## Today` plan that `/pl-daily` wrote the evening before. |
 | [[Project Phoenix]] | An active project: timeline, decisions, open items and a timeline chart. Its meetings: [[Phoenix Kickoff 2026-09-29]] (one-off) and [[Phoenix Weekly]] (with a sent recap, see [[2026-10-08]]). |
 | [[Invoice Automation]] | A completed project in `4_Archive`, with its closing summary. |
 | [[Vendor Management]] | An area with an open `#for-manager` question. |
@@ -33,7 +33,7 @@ The demo's "today" is 2026-10-16. Give the date where a command needs it.
 
 | Try | What you see |
 |---|---|
-| `/pl-daily 2026-10-15`, then `/pl-daily 2026-10-16` | The two open dumps get filed. It asks before it creates the new items (e.g. the demo for the sales team leads). |
+| `/pl-daily 2026-10-15`, then `/pl-daily 2026-10-16` | The two open dumps get filed. It asks before it creates the new items (e.g. the demo for the sales team leads). The first run also writes `## Today` into 2026-10-16: the recap for Phoenix Weekly and `/pl-week` for Friday. |
 | `/pl-evidence Did we agree to start Phoenix with the sales team?` | On 2026-10-15 Tom doubts it. The answer quotes the kickoff on 2026-09-29. |
 | `/pl-prep manager 1:1` | Wins and project updates since the last prep, plus the open contract extension `#for-manager`. |
 | `/pl-week` (say the week is 2026-10-12 to 2026-10-16) | The weekly update. First it asks to fill in the two open days. |

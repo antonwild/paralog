@@ -2,6 +2,7 @@
 type: meeting
 project: 
 cadence: 
+next: 
 status: active
 created: {{date:YYYY-MM-DD}}
 aliases: []

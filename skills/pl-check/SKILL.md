@@ -9,6 +9,8 @@ description: Check the Obsidian PARA vault for problems — duplicate open tasks
 
 Read `_system/rules.md` and `_system/config.md`.
 
+**Style:** write everything (notes, emails, replies in chat) in the writing style of rules section 2a, in every language: short sentences, common words, active voice.
+
 ## Step 1 — Run the check script
 
 Run `bash "<skills folder>/pl-setup/scripts/check.sh" "<vault>"` (the `pl-setup` skill sits next to this skill's folder). It is read-only and prints one line per problem: `<check> <file>: <problem>`. Exit code 0 means no problems.
@@ -22,6 +24,7 @@ Run `bash "<skills folder>/pl-setup/scripts/check.sh" "<vault>"` (the `pl-setup`
 | `tasks` | Only with `tasks_plugin: on`: the checks in rules section 11, *Checks*. |
 | `props` | Processed daily notes without the properties of rules section 12, or whose links and counts differ from the vault. Topics that are not lowercase-with-dashes, or more than 5. |
 | `people` | A property that lists people, in any note (rules section 6). |
+| `order` | `Timeline`, `Log`, `Decisions`, `Wins` or `Milestones` sections that are not newest first (rules section 2, rule 11). After an update from paralog 0.2 or older, every log shows here once. |
 
 If the script is not there (another agent setup), do these checks by reading the vault.
 
@@ -45,5 +48,7 @@ Fixes follow the writing rules: never edit a Brain Dump, never delete log entrie
 1. Run `bash "<skills folder>/pl-setup/scripts/props.sh" "<vault>" <date>...` (several dates in one call) and copy `projects`, `meetings`, `areas` and the counts exactly.
 2. `summary`: the `**In short:**` text of its Summary, without names of people (rules section 12). Several Summaries (re-runs): one or two sentences for the whole day.
 3. `topics`: from the Brain Dump and the Summary, as rules section 12 says. Run `props.sh "<vault>" --topics` first and again after every few notes, so later notes reuse the topics of earlier ones. Work from the oldest note to the newest.
+
+**Fixing `order`:** run `bash "<skills folder>/pl-setup/scripts/order.sh" "<vault>" --fix`. It sorts the sections newest first and only moves lines: no word changes, no correction entry needed. A section it cannot sort (text without a date) stays in the list: sort it by hand, or ask the user. Older entries of one date stay separate lines. Only new entries use *One entry per date* (rules section 3).
 
 **Fixing `people`:** remove the property. Names that the work needs stay as plain text in the entries.

@@ -9,6 +9,8 @@ description: Write a one-page handover for a project or area from the Obsidian P
 
 Read `_system/rules.md` and `_system/config.md`.
 
+**Style:** write everything (notes, emails, replies in chat) in the writing style of rules section 2a, in every language: short sentences, common words, active voice.
+
 ## Step 1 — Scope
 
 What to hand over: one project or area, or **all active projects** (e.g. for vacation). Match names against note names and `aliases`. If unclear, ask with the interactive question tool (rules section 8). Ask the reader's name only if the user wants the handover addressed to someone.
@@ -64,4 +66,4 @@ Follow the writing style (rules section 2a). One page per project at most. The r
 
 1. Insert the handover into the project or area note under `## Handover`, **newest on top**, with a `---` line between it and the older handover (rules section 2, rule 10). Add the heading above `## Timeline` or `## Log` if missing.
 2. Show it in chat, ready to copy. For several projects, show them one after another.
-3. Append to the Timeline/Log: `- [[<today>]] — **Handover written.**`
+3. Add to the top of the Timeline/Log (newest first, rules section 2, rule 11): `- [[<today>]] — **Handover written.**`
